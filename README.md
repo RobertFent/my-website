@@ -1,5 +1,5 @@
-![StackZero Frozen Icon](stackzero.png)
-# Template for StackZero SaaS
+![StackZero Frozen Icon](static/stackzero.png)
+# My own Website using StackZero
 This is the template repository for [StackZero](https://github.com/RobertFent/StackZero)
 
 ## How to use

@@ -1,13 +1,4 @@
+*.db*
 .env
 .env-acme
-/app/*
-/core/*
-/data/*
-/data/migrations/*
-/static/*
-!/app/.gitkeep
 !/core/.gitkeep
-!/data/.gitkeep
-!/data/migrations/
-!/data/migrations/.gitkeep
-!/static/.gitkeep
