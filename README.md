@@ -34,9 +34,15 @@ Add the code to core/
 - overwrite logic -> currently all content from app is copied to app in docker and replaces everything
 
 ## How to fork own repos
+Create inital fork
 ```bash
 git clone git@github.com:RobertFent/StackZero-template.git
 git remote rename origin upstream
 git remote add origin git@github.com:RobertFent/my-website.git
 git push -u origin master
+```
+Pull changes from forked repo
+```bash
+git fetch upstream
+git merge upstream/master
 ```
