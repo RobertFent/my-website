@@ -32,3 +32,11 @@ Add the code to core/
 ## todo
 - dev mode -> npm run start-local
 - overwrite logic -> currently all content from app is copied to app in docker and replaces everything
+
+## How to fork own repos
+```bash
+git clone git@github.com:RobertFent/StackZero-template.git
+git remote rename origin upstream
+git remote add origin git@github.com:RobertFent/my-website.git
+git push -u origin master
+```
