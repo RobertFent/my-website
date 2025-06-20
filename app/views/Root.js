@@ -122,11 +122,6 @@ export const Root = () => {
 												<a href="/cv">View my CV</a>
 											</li>
 											<li>
-												<a href="/jobs"
-													>See job offerings</a
-												>
-											</li>
-											<li>
 												<a
 													href="mailto:info@robertfent.com"
 													>Contact me</a
@@ -224,6 +219,12 @@ export const Root = () => {
 							This setup helps me stay lean, independent, and
 							fully in control — with full visibility from
 							development to deployment.
+						</p>
+						<hr style="margin-top: 2rem; margin-bottom: 2rem;" />
+						<p>
+							<strong>
+								I offer StackZero at several freelance websites. Feel free to check out the product page at <a href="https://robertfentastic.gumroad.com/l/niqtv">Gumroad</a> or <a href="https://leanstack.lemonsqueezy.com/buy/03a1ea26-6aa8-4465-a8f0-0b7ad91388d9">Lemon Squeezy</a> :-)
+							</strong>
 						</p>
 					</div>
 				</div>
