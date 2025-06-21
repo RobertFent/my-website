@@ -80,8 +80,8 @@ export const Layout = (Main) => {
 						<div hx-target="main" hx-boost="true">
 							<a href="/#">Homepage</a>
 							<a href="/guestbook#">Guestbook</a>
-							<a href="/blog#">Blog</a>
 							<a href="/cv#">CV</a>
+							<a href="/blog#">Blog</a>
 						</div>
 					</header>
 					<main hx-target="this" hx-swap="innerHTML">
