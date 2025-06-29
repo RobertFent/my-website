@@ -10,6 +10,9 @@ services:
       - ./static:/stackzero/static
       - ./data:/stackzero/data
     #   - ./core:/stackzero/core # todo: make core overridable
+    restart: unless-stopped
+    networks:
+      - nginxproxy
 
   migrate-stackzero:
     image: ghcr.io/robertfent/stackzero:v1.0.0
@@ -31,6 +34,8 @@ services:
       - html_data:/usr/share/nginx/html # required for ACME HTTP-01 challenge
       - /var/run/docker.sock:/tmp/docker.sock:ro
     restart: unless-stopped
+    networks:
+      - nginxproxy
 
   acme-companion:
     image: nginxproxy/acme-companion
@@ -46,6 +51,12 @@ services:
     depends_on:
       - nginx-proxy
     restart: unless-stopped
+    networks:
+      - nginxproxy
+
+networks:
+  nginxproxy:
+    external: true
 
 volumes:
   certs:
