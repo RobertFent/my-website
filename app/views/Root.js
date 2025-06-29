@@ -12,6 +12,12 @@ export const Root = () => {
 					height: 90vh;
 					margin-left: var(--size-8);
 				}
+				@media (max-width: 600px) {
+					me {
+						justify-content: flex-start;
+						margin-top: var(--size-32);
+					}
+				}
 			</style>
 			<h1>Robert Fent</h1>
 			<h2>Full Stack Software Developer & Tech Enthusiast</h2>
@@ -31,6 +37,12 @@ export const Root = () => {
 				}
 				me h1 {
 					font-size: var(--size-16);
+				}
+				@media (max-width: 600px) {
+					me .about-content {
+						flex-direction: column;
+						margin: var(--size-2);
+					}
 				}
 			</style>
 			<div class="about-content colored-component">

@@ -63,6 +63,18 @@ export const Layout = (Main) => {
 							border-radius: var(--radius-md);
 							
 						}
+						@media (min-width: 400px) and (max-width: 600px) {
+							me {
+								background-position: top left;
+								background-size: 800px auto;
+							}
+						}
+						@media (max-width: 400px) {
+							me {
+								background-position: top left;
+								background-size: 600px auto;
+							}
+						}
 					</style>
 					<header>
 						<style>
@@ -96,7 +108,7 @@ export const Layout = (Main) => {
 									margin-left: 0;
 									margin-right: var(--size-3);
 								}
-								}
+							}
 						</style>
 						<div class="name-heading">
 						<span style="color: var(--color-accent);">R</span>obert
