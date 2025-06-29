@@ -11,13 +11,8 @@ export const ProductionNote = () => {
 				height: 70vh;
 				font-family: sans-serif;
 				font-size: 1.5rem;
-				color: #333;
 			}
 		</style>
-		<meta http-equiv="refresh" content="3;url=/" />
-		<div class="center-message">
-			🚧 This page is still in production...<br />
-			You will be redirected to the main page shortly...
-		</div>
+		<div class="center-message">🚧 This page is still in production...</div>
 	`;
 };

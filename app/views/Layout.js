@@ -35,13 +35,15 @@ export const Layout = (Main) => {
 					<link rel="stylesheet" href="/static/css/app.css" />
 					<link rel="icon" href="/static/favicon.png" />
 
-					<title>Robots Website</title>
+					<title>Robert Fent - Portfolio</title>
 				</head>
 
 				<body data-appversion="${params.appVersion}">
 					<style>
 						me {
 							font-family: var(--font-sans);
+							background: var(--color-primary);
+							color: var(--color-secondary)
 						}
 						body {
 							display: flex;
@@ -54,9 +56,8 @@ export const Layout = (Main) => {
 							flex-direction: column;
 							gap: var(--size-4);
 							padding: var(--size-4);
-							border: 1px solid var(--color-grey-200);
 							border-radius: var(--radius-md);
-							background: var(--color-grey-50);
+							
 						}
 					</style>
 					<header>
@@ -65,11 +66,11 @@ export const Layout = (Main) => {
 								display: flex;
 								align-items: center;
 								justify-content: flex-start;
-								padding: var(--size-8) var(--size-4);
-								background: var(--color-grey-100, #f7f7f7);
+								padding: var(--size-4) var(--size-4);
 							}
 							me a {						
 								margin-right: var(--size-6);
+								color: var(--color-secondary);
 							}
 							@media sm {
 								me {
@@ -82,6 +83,7 @@ export const Layout = (Main) => {
 							<a href="/guestbook#">Guestbook</a>
 							<a href="/cv#">CV</a>
 							<a href="/blog#">Blog</a>
+							<a href="/projects#">Projects</a>
 						</div>
 					</header>
 					<main hx-target="this" hx-swap="innerHTML">
@@ -93,8 +95,7 @@ export const Layout = (Main) => {
 								text-align: center;
 								max-width: var(--width-lg);
 								margin: 0 auto;
-								padding: var(--size-8) 0;
-								color: var(--color-grey-600);
+								padding: var(--size-2) 0;
 							}
 						</style>
 						© ${new Date().getFullYear()}  

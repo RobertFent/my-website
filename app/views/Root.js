@@ -28,7 +28,7 @@ export const Root = () => {
 					gap: var(--size-8);
 				}
 				me .profile-upper-content a {
-					color: #ffffff;
+					color: var(--color-primary);
 					text-decoration: underline;
 					margin-top: var(--size-60);
 				}
@@ -39,19 +39,13 @@ export const Root = () => {
 				me .main-section p {
 					margin-bottom: var(--size-4);
 				}
-				me .profile-lower-content h3 {
-					margin-bottom: var(--size-2);
-				}
-				me .profile-lower-content p {
-					margin-bottom: var(--size-2);
-				}
 				me .tech-content {
 					flex: 1 1 40%;
 					display: flex;
 					flex-direction: column;
 					justify-content: center;
 				}
-				@media (max-width: 600px) {
+				@media (max-width: 1300px) {
 					me .profile-upper-content img {
 						width: 100%;
 					}
@@ -92,20 +86,29 @@ export const Root = () => {
 								<img
 									src="/static/me.jpeg"
 									alt="Photo of me"
-									style="height: 100%; max-width: 300px; border-radius: 12px; box-shadow: 0 2px 12px #0002; margin: 0 auto;"
+									style="height: 100%; max-width: 300px; border-radius: var(--radius-xl); box-shadow: 0 2px 12px #0002; margin: 0 auto;"
 								/>
 								<div style="text-align: left;">
-									<div>
-										<p>
-											<strong>Name:</strong> Robert Fent
-										</p>
-										<p><strong>Age:</strong> 27</p>
-										<p>
-											<strong>Hobbies:</strong> Coding,
-											Cooking, Weightlifting, Travel,
-											Warhammer
-										</p>
-									</div>
+									<h3>Howdy 🤠,</h3>
+									<p>
+										my name is Robert, I am 27 years old and
+										I live in Germany.
+									</p>
+									<p>
+										I am a passionate Software Developer who
+										loves to build new Software with a focus
+										on maintainablity, automated deployments
+										and low cost.
+									</p>
+									<p>
+										I am also into working out 🏋️, cocking
+										👨‍🍳 or traveling 🧳 with my fiancee.
+										Actually I am doing most activities with
+										her if I think about it🤔 but I love her
+										so this is okay 🫶. Anyways there is one
+										very important hobby I share with my
+										brother Lugo -> Warhammer🛠️🎨
+									</p>
 									<p>
 										<a href="https://github.com/RobertFent"
 											>GitHub</a
@@ -117,9 +120,13 @@ export const Root = () => {
 												<a href="/blog"
 													>Checkout my blog</a
 												>
+												or <a href="/cv">my CV</a>
 											</li>
 											<li>
-												<a href="/cv">View my CV</a>
+												<a href="/projects"
+													>Have a look at my
+													projects</a
+												>
 											</li>
 											<li>
 												<a
@@ -131,40 +138,21 @@ export const Root = () => {
 									</div>
 								</div>
 							</div>
-							<div class="profile-lower-content">
-								<h3>Howdy 🤠,</h3>
-								<p>
-									my name is Robert, I am 27 years old and I
-									live in Germany.
-								</p>
-								<p>
-									I am a passionate Software Developer who
-									loves to build new Software with a focus on
-									maintainablity, automated deployments and
-									low cost.
-								</p>
-								<p>
-									I am also into working out 🏋️, cocking 👨‍🍳 or
-									traveling 🧳 with my fiancee. Actually I am
-									doing most activities with her if I think
-									about it🤔 but I love her so this is okay 🫶.
-									Anyways there is one very important hobby I
-									share with my brother Lugo -> Warhammer🛠️🎨
-								</p>
-							</div>
 						</div>
 					</div>
 					<!-- Right Column: Tech Description -->
 					<div class="tech-content">
 						<h2 style="margin-bottom: var(--size-8);">StackZero</h2>
 						<p>
-							I built this site using a simple and efficient
-							stack:
-							<a href="https://nodejs.org">Node.js</a>,
-							<a href="https://fastify.dev/">Fastify</a>,
-							<a href="https://htmx.org/">htmx</a>, and
-							<a href="https://sqlite.org/">SQLite</a> — all
-							wrapped in
+							I built this site using my own lightweight framework
+							called <strong>StackZero</strong>, which is based on
+							a simple and efficient stack:
+							<a href="https://nodejs.org">Node.js</a> with
+							<a href="https://fastify.dev/">Fastify</a> as the
+							backend, <a href="https://htmx.org/">htmx</a> for as
+							frontend and
+							<a href="https://sqlite.org/">SQLite</a> as the
+							simple database — all wrapped in
 							<a href="https://www.docker.com/">Docker</a> and
 							deployed via
 							<a href="https://github.com/features/actions"
@@ -181,49 +169,11 @@ export const Root = () => {
 							run end-to-end browser tests, ensuring that
 							everything works reliably across deployments.
 						</p>
-						<p>
-							I use Node.js for its lightweight runtime and broad
-							ecosystem, making it easy to build fast and
-							maintainable backend logic.
-						</p>
-						<p>
-							Fastify serves as the web framework because of its
-							minimal footprint, high performance, and modern
-							development support.
-						</p>
-						<p>
-							For interactive UIs, I rely on HTMX, which lets me
-							create dynamic, responsive interfaces using plain
-							HTML without the complexity of a frontend framework.
-						</p>
-						<p>
-							SQLite is my database of choice — fast, serverless,
-							and ideal for simple deployments without external
-							dependencies.
-						</p>
-						<p>
-							Docker ensures consistent local and production
-							environments, making deployment straightforward and
-							repeatable.
-						</p>
-						<p>
-							GitHub Actions automates my CI/CD pipeline, enabling
-							reliable and fast deployments with every push. To
-							ensure stability and confidence in every release, I
-							use Playwright to run end-to-end browser tests that
-							validate the user experience from a real-world
-							perspective.
-						</p>
-						<p>
-							This setup helps me stay lean, independent, and
-							fully in control — with full visibility from
-							development to deployment.
-						</p>
 						<hr style="margin-top: 2rem; margin-bottom: 2rem;" />
 						<p>
 							<strong>
 								I offer StackZero at several freelance websites.
-								Feel free to check out the product page at
+								Feel free to visit the product page at
 								<a
 									href="https://robertfentastic.gumroad.com/l/niqtv"
 									>Gumroad</a
@@ -233,16 +183,15 @@ export const Root = () => {
 									href="https://leanstack.lemonsqueezy.com/buy/03a1ea26-6aa8-4465-a8f0-0b7ad91388d9"
 									>Lemon Squeezy</a
 								>
-								:-)
+								or simply check out the git project at
+								<a
+									href="https://github.com/RobertFent/StackZero"
+									>GitHub</a
+								>:-)
 							</strong>
 						</p>
 					</div>
 				</div>
-				<hr style="margin-top: 2rem;" />
-				<p style="text-align: center;">
-					Don't forget to check out the
-					<a hx-boost="true" href="/guestbook">Guestbook</a>.
-				</p>
 			</section>
 		</div>
 	`;

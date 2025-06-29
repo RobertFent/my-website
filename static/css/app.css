@@ -1,21 +1,24 @@
+:root {
+	--color-primary: #6d5bc9;
+	--color-secondary: #dcdcdc;
+	--color-accent: #c9a65b;
+}
 /* put all shared css here */
 a {
-	color: var(--color-primary, #0070f3);
+	color: var(--color-accent);
 	text-decoration: none;
-	border-radius: 4px;
-	transition:
-		background 0.2s,
-		color 0.2s;
+	border-radius: var(--radius-sm);
+	transition: background 0.2s, color 0.2s;
 	font-weight: 500;
 }
 a:hover,
 a:focus {
-	background: var(--color-primary, #0070f3);
-	color: #fff;
+	background: var(--color-accent);
+	color: var(--color-primary);
 	text-decoration: underline;
 }
 .colored-component {
-	background: #0070f3;
-	color: white;
-	border-radius: var(--size-6);
+	background: var(--color-secondary);
+	color: var(--color-primary);
+	border-radius: var(--radius-xl);
 }

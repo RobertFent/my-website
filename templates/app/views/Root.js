@@ -93,7 +93,7 @@ export const Root = () => {
 								<img
 									src="/static/me.jpeg"
 									alt="Photo of me"
-									style="height: 100%; max-width: 300px; border-radius: 12px; box-shadow: 0 2px 12px #0002; margin: 0 auto;"
+									style="height: 100%; max-width: 300px; border-radius: var(--radius-xl); box-shadow: 0 2px 12px #0002; margin: 0 auto;"
 								/>
 								<div style="text-align: left;">
 									<div>
@@ -140,10 +140,9 @@ export const Root = () => {
 									I am also into working out 🏋️, cocking 👨‍🍳 or
 									traveling 🧳 with my fiancee. Actually I am
 									doing most activities with her if I think
-									about it🤔 but I love her so this is okay
-									🫶. Anyways there is one very important
-									hobby I share with my brother Lugo ->
-									Warhammer🛠️🎨
+									about it🤔 but I love her so this is okay 🫶.
+									Anyways there is one very important hobby I
+									share with my brother Lugo -> Warhammer🛠️🎨
 								</p>
 							</div>
 						</div>
