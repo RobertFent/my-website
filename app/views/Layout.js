@@ -42,7 +42,11 @@ export const Layout = (Main) => {
 					<style>
 						me {
 							font-family: var(--font-sans);
-							background: var(--color-primary);
+							background-color: black;
+    						background-image: url('/static/robert1.png');
+							background-repeat: no-repeat;
+    						background-position: top right;
+							background-size: 1000px auto;
 							color: var(--color-secondary)
 						}
 						body {
@@ -65,26 +69,43 @@ export const Layout = (Main) => {
 							me {
 								display: flex;
 								align-items: center;
-								justify-content: flex-start;
-								padding: var(--size-4) var(--size-4);
+								justify-content: space-between;
+      							padding: var(--size-4);
+								margin-left: var(--size-8);
+							}
+							me .name-heading{
+								font-size: var(--size-16);
 							}
 							me a {						
 								margin-right: var(--size-6);
 								color: var(--color-secondary);
+								font-size: var(--size-6);
 							}
-							@media sm {
+							@media (max-width: 600px) {
 								me {
-									font-size: var(--scale-2);
+									flex-direction: column;
+									align-items: flex-start;
 								}
-							}
+
+								me nav {
+									flex-wrap: wrap;
+									margin-top: var(--size-2);
+								}
+
+								me nav a {
+									margin-left: 0;
+									margin-right: var(--size-3);
+								}
+								}
 						</style>
-						<div hx-target="main" hx-boost="true">
-							<a href="/#">Homepage</a>
-							<a href="/guestbook#">Guestbook</a>
-							<a href="/cv#">CV</a>
-							<a href="/blog#">Blog</a>
-							<a href="/projects#">Projects</a>
+						<div class="name-heading">
+						<span style="color: var(--color-accent);">R</span>obert
 						</div>
+						<nav hx-target="main" hx-boost="true">
+							<a href="/#">Home</a>
+							<a href="/#about">About</a>
+							<a href="/cv">CV</a>
+						</nav>
 					</header>
 					<main hx-target="this" hx-swap="innerHTML">
 						${Main(params)}

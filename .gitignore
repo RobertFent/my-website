@@ -8,3 +8,4 @@ node_modules
 !/data/migrations/
 !/data/migrations/.gitkeep
 !/static/.gitkeep
+.DS_Store

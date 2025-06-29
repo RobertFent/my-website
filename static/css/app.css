@@ -1,6 +1,6 @@
 :root {
-	--color-primary: #6d5bc9;
-	--color-secondary: #dcdcdc;
+	--color-primary: #000000;
+	--color-secondary: #ffffff;
 	--color-accent: #c9a65b;
 }
 /* put all shared css here */
@@ -14,11 +14,11 @@ a {
 a:hover,
 a:focus {
 	background: var(--color-accent);
-	color: var(--color-primary);
+	color: var(--color-secondary);
 	text-decoration: underline;
 }
 .colored-component {
-	background: var(--color-secondary);
-	color: var(--color-primary);
+	background: var(--color-primary);
+	color: var(--color-secondary);
 	border-radius: var(--radius-xl);
 }
