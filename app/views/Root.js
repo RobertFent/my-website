@@ -11,7 +11,7 @@ export const Root = () => {
 			me .flex-row {
 				display: flex;
 				flex-direction: row;
-				gap: var(--size-16);
+				gap: var(--size-12);
 			}
 			me #home {
 				display: flex;
@@ -26,24 +26,45 @@ export const Root = () => {
 				border-radius: var(--radius-xl);
 				min-width: 250px;
 			}
-			me #about .links {
-				margin-top: var(--size-12);
-				font-size: var(--size-8);
-			}
 			me #projects {
-				margin-top: var(--size-64);
+				margin-top: var(--size-32);
 			}
 			me #projects .project-components {
 				margin-top: var(--size-12);
 				flex-wrap: wrap;
-				justify-content: space-evenly;
+				justify-content: flex-start;
 			}
 			me #contact {
-				margin-top: var(--size-64);
+				margin-top: var(--size-32);
+			}
+			me #about .about-items {
+				gap: var(--size-0);
+				justify-content: space-evenly;
+			}
+			me #about .about-item {
+				margin: var(--size-6);
+				flex: 1 1 calc(30%);
+			}
+			me #about .about-item a {
+				cursor: pointer;
+				font-size: var(--size-6);
+			}
+			me #about .about-item ul {
+				overflow: hidden;
+				max-height: 0vh;
+			}
+			me #about .about-item li {
+				margin-top: var(--size-6);
+			}
+			me #about .about-item .li-visible {
+				max-height: 40vh;
 			}
 			@media (max-width: 1200px) {
 				me {
 					margin: var(--size-8);
+				}
+				me .flex-row {
+					gap: var(--size-12);
 				}
 			}
 			@media (max-width: 900px) {
@@ -58,7 +79,13 @@ export const Root = () => {
 					margin-top: var(--size-32);
 					height: 70vh;
 				}
+				me #about img {
+					max-width: 350px;
+				}
 				me #about {
+					flex-direction: column;
+				}
+				me #about .about-items {
 					flex-direction: column;
 				}
 				me #projects {
@@ -77,7 +104,7 @@ export const Root = () => {
 
 		<div id="home">
 			<h1>Robert Fent</h1>
-			<h2>Full Stack Software Developer & Tech Enthusiast</h2>
+			<h2>Fullstack Software Developer & DevOps Engineer</h2>
 		</div>
 
 		<div id="about" class="colored-component flex-row">
@@ -96,15 +123,54 @@ export const Root = () => {
 					deployments and low cost.
 				</p>
 				<p>
-					I am also into working out 🏋️, cocking 👨‍🍳 or traveling 🧳
-					with my fiancee. Actually I am doing most activities with
-					her if I think about it🤔 but I love her so this is okay 🫶.
-					Anyways there is one very important hobby I share with my
-					brother Lugo -> Warhammer🛠️🎨
+					I am also into working out 🏋️, drinking coffee ☕, cocking
+					👨‍🍳 or traveling 🧳 with my fiancee. Actually I am doing most
+					activities with her if I think about it🤔 but I love her so
+					this is okay 🫶. Anyways there is one very important hobby I
+					share with my brother Lugo -> Warhammer🛠️🎨
 				</p>
-				<div class="flex-row links">
-					<a href="https://github.com/RobertFent">GitHub</a>
-					<a href="/cv">CV</a>
+				<div class="flex-row about-items">
+					<div class="about-item">
+						<a>Skills</a>
+						<ul style="list-style: inside;">
+							<li>JavaScript/TypeScript, Python</li>
+							<li>Node.js/Flask</li>
+							<li>Docker, AWS, GitLab CI</li>
+							<li>Clean Code & Software Architecture</li>
+							<li>Linux, Shell</li>
+						</ul>
+					</div>
+					<div class="about-item">
+						<a>Work Experience</a>
+						<ul>
+							<li>
+								<strong>10/2019 - 06/2021</strong>: Fullstack
+								Software Developer @ DioVision Systems GmbH
+							</li>
+							<li>
+								<strong>10/2023 - 05/2024</strong>: Fullstack
+								Software Developer @ T.CON GmbH & Co. KG
+							</li>
+							<li>
+								<strong>06/2024 - present</strong>: Fullstack
+								Software Developer & DevOps Engineer @ ECO2GROW
+								GmbH
+							</li>
+						</ul>
+					</div>
+					<div class="about-item">
+						<a>Education</a>
+						<ul>
+							<li>
+								<strong>10/2017 - 09/2021</strong>: B.A. in
+								Media Informatics @ University of Regensburg
+							</li>
+							<li>
+								<strong>10/2021 - 09/2023</strong>: M.Sc in
+								Computer Science @ OTH Regensburg
+							</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -125,17 +191,24 @@ export const Root = () => {
 				)}
 				${ProjectComponent(
 					'Stock Analyzer',
-					'Two years ago when I was into trading I built an automation tool in plain <a href="https://www.python.org/">Python</a> according to the <strong>PowerX Strategy</strong> by Markus Heitkoetter designed as a command line tool. This program gave me signals when to buy and sell stocks.',
+					'I built a stock automation tool in <a href="https://www.python.org/">Python</a> based on the <strong>PowerX Strategy</strong> by Markus Heitkoetter. Designed as a command line application, it generated buy and sell signals to support my trading decisions — all fully local and under my control.',
 					'python_white.png',
 					'https://github.com/RobertFent/PowerXStocksAnalyzer',
 					'PowerXStocksAnalyzer'
 				)}
+				${ProjectComponent(
+					'Weather Forecast',
+					'I built a small forecasting tool in <a href="https://www.python.org/">Python</a> to predict future weather based on historical data. It allows data updates via the <a href="https://www.worldweatheronline.com/developer/">WorldWeatherOnline API</a> and supports feature selection and training via a simple CLI — ideal for experimenting with time series prediction in a fully local setup.',
+					'weather_forecast_white.png',
+					'https://github.com/RobertFent/Weather-Forecast',
+					'Weather-Forecast'
+				)}
 			</div>
+			<div id="contact">
+				<h1>Contact</h1>
+			</div>
+			${ProductionNote()}
 		</div>
-		<div id="contact">
-			<h1>Contact</h1>
-		</div>
-		${ProductionNote()}
 	`;
 	// return html`
 	// 	<div>

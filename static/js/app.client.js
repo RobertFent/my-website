@@ -26,6 +26,18 @@ document.addEventListener('htmx:afterProcessNode', (event) => {
 	}
 });
 
+// add click animations to about me lists
+let aboutItems = document.getElementsByClassName('about-item');
+for (const aboutItem of aboutItems) {
+	aboutItem.addEventListener('click', () => {
+		for (const item of aboutItems) {
+			item.getElementsByTagName('ul')[0].classList.remove('li-visible');
+		}
+		aboutItem.getElementsByTagName('ul')[0].classList.add('li-visible');
+	});
+}
+
+// add click and exit hover animations to project cards
 let projectComponents = document.getElementsByClassName('project-component');
 for (const projectComponent of projectComponents) {
 	projectComponent.addEventListener('click', () => {

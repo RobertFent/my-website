@@ -14,15 +14,18 @@ export const ProjectComponent = (
 					background-color: #2b2b2b;
 					border-radius: var(--radius-md);
 					padding: var(--size-8);
-					width: 25vw;
 					align-self: flex-start;
 					cursor: pointer;
 					&:not(.clicked):hover {
 						background-color: var(--color-accent);
 					}
+					flex: 1 1 calc(30%);
+					box-sizing: border-box;
+					max-width: calc(30% - 20px);
 				}
 				me h1 {
-					font-size: var(--size-8);
+					font-size: var(--size-6);
+					white-space: nowrap;
 				}
 				me .icon {
 					background: url('/static/icons/${iconName}');
@@ -54,7 +57,8 @@ export const ProjectComponent = (
 				}
 				@media (max-width: 900px) {
 					me {
-						width: 70vw;
+						flex: 1 1 100%;
+						max-width: 80vw;
 					}
 					me h1 {
 						font-size: var(--size-8);

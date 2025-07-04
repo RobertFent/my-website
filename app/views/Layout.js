@@ -121,6 +121,7 @@ export const Layout = (Main) => {
 							<a href="/#about">About</a>
 							<a href="/#projects">Projects</a>
 							<a href="/#contact">Contact</a>
+							<a href="/cv">CV</a>
 						</nav>
 					</header>
 					<main hx-target="this" hx-swap="innerHTML">
