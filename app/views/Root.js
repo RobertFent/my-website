@@ -1,82 +1,141 @@
 import { html } from '../../core/modules/html.js';
 import { ProductionNote } from '../components/ProductionNote.js';
+import { ProjectComponent } from '../components/ProjectComponent.js';
 
 export const Root = () => {
 	return html`
-		<div id="home">
-			<style>
+		<style>
+			me {
+				margin: var(--size-32);
+			}
+			me .flex-row {
+				display: flex;
+				flex-direction: row;
+				gap: var(--size-16);
+			}
+			me #home {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				height: 90vh;
+			}
+			me h1 {
+				font-size: var(--size-14);
+			}
+			me #about img {
+				border-radius: var(--radius-xl);
+				min-width: 250px;
+			}
+			me #about .links {
+				margin-top: var(--size-12);
+				font-size: var(--size-8);
+			}
+			me #projects {
+				margin-top: var(--size-64);
+			}
+			me #projects .project-components {
+				margin-top: var(--size-12);
+				flex-wrap: wrap;
+				justify-content: space-evenly;
+			}
+			me #contact {
+				margin-top: var(--size-64);
+			}
+			@media (max-width: 1200px) {
 				me {
-					display: flex;
+					margin: var(--size-8);
+				}
+			}
+			@media (max-width: 900px) {
+				me {
+					margin: var(--size-4);
+				}
+				me h1 {
+					font-size: var(--size-12);
+				}
+				me #home {
+					justify-content: flex-start;
+					margin-top: var(--size-32);
+					height: 70vh;
+				}
+				me #about {
 					flex-direction: column;
-					justify-content: center;
-					height: 90vh;
-					margin-left: var(--size-8);
 				}
-				@media (max-width: 600px) {
-					me {
-						justify-content: flex-start;
-						margin-top: var(--size-32);
-					}
+				me #projects {
+					margin-top: var(--size-16);
+					flex-direction: column;
 				}
-			</style>
+				me #projects .project-components {
+					flex-direction: column;
+				}
+				me #contact {
+					margin-top: var(--size-16);
+					flex-direction: column;
+				}
+			}
+		</style>
+
+		<div id="home">
 			<h1>Robert Fent</h1>
 			<h2>Full Stack Software Developer & Tech Enthusiast</h2>
 		</div>
 
-		<div id="about">
-			<style>
-				me .about-content {
-					display: flex;
-					flex-direction: row;
-					gap: var(--size-16);
-					margin: var(--size-32);
-				}
-				me img {
-					border-radius: var(--radius-xl);
-					box-shadow: 0 2px 12px #0002;
-				}
-				me h1 {
-					font-size: var(--size-16);
-				}
-				@media (max-width: 600px) {
-					me .about-content {
-						flex-direction: column;
-						margin: var(--size-2);
-					}
-				}
-			</style>
-			<div class="about-content colored-component">
-				<div class="left-content">
-					<img src="/static/me.jpeg" alt="Photo of me" />
-				</div>
-				<div class="right-content">
-					<h1>About Me</h1>
-					<p>
-						Howdy 🤠, my name is Robert, I am 27 years old and I
-						live in Germany.
-					</p>
-					<p>
-						I am a passionate Software Developer who loves to build
-						new Software with a focus on maintainablity, automated
-						deployments and low cost.
-					</p>
-					<p>
-						I am also into working out 🏋️, cocking 👨‍🍳 or traveling
-						🧳 with my fiancee. Actually I am doing most activities
-						with her if I think about it🤔 but I love her so this is
-						okay 🫶. Anyways there is one very important hobby I
-						share with my brother Lugo -> Warhammer🛠️🎨
-					</p>
-					<p style="margin-top: 2rem">
-						<a href="https://github.com/RobertFent">GitHub</a>
-					</p>
-					<p>
-						<a href="mailto:info@robertfent.com">Contact me</a>
-					</p>
+		<div id="about" class="colored-component flex-row">
+			<div class="left-content">
+				<img src="/static/me.jpeg" alt="Photo of me" />
+			</div>
+			<div class="right-content">
+				<h1>About Me</h1>
+				<p>
+					Howdy 🤠, my name is Robert, I am 27 years old and I live in
+					Germany.
+				</p>
+				<p>
+					I am a passionate Software Developer who loves to build new
+					Software with a focus on maintainablity, automated
+					deployments and low cost.
+				</p>
+				<p>
+					I am also into working out 🏋️, cocking 👨‍🍳 or traveling 🧳
+					with my fiancee. Actually I am doing most activities with
+					her if I think about it🤔 but I love her so this is okay 🫶.
+					Anyways there is one very important hobby I share with my
+					brother Lugo -> Warhammer🛠️🎨
+				</p>
+				<div class="flex-row links">
+					<a href="https://github.com/RobertFent">GitHub</a>
+					<a href="/cv">CV</a>
 				</div>
 			</div>
-			<div>${ProductionNote()}</div>
 		</div>
+		<div id="projects">
+			<h1>Projects</h1>
+			<div class="project-components flex-row">
+				${ProjectComponent(
+					'StackZero',
+					'I built this site using my own lightweight framework called <strong>StackZero</strong>, which is based on a simple and efficient stack: <a href="https://nodejs.org">Node.js</a> with <a href="https://fastify.dev/">Fastify</a>, <a href="https://htmx.org/">htmx</a> and <a href="https://sqlite.org/">SQLite</a> — all wrapped in <a href="https://www.docker.com/">Docker</a> and deployed via <a href="https://github.com/features/actions">GitHub Actions</a>. The entire setup is designed to be low-cost (under 5€ per month, including DNS via <a href="https://www.ionos.de/">Ionos</a> and hosting on a <a href="https://www.hetzner.com/">Hetzner</a> server), transparent, and fully under my control.',
+					'html_white.png',
+					'https://github.com/RobertFent/StackZero',
+					'StackZero'
+				)}
+				${ProjectComponent(
+					'Home Server',
+					'I setup an home server using an <strong>HP ProDesk 600 G4</strong> running <a href="https://ubuntu.com/">Ubuntu Server</a>, fully automated with <a href="https://www.ansible.com/">Ansible</a> and containerized via <a href="https://www.docker.com/">Docker Compose</a>. It hosts a media automation suite based on the <strong>arr stack</strong> and <a href="https://www.plex.tv/">Plex</a> — all using images from <a href="https://www.linuxserver.io/">LinuxServer.io</a>. The setup is zero-config, reproducible, and entirely under my control — ideal for managing media and services on my own terms.',
+					'server_white.png'
+				)}
+				${ProjectComponent(
+					'Stock Analyzer',
+					'Two years ago when I was into trading I built an automation tool in plain <a href="https://www.python.org/">Python</a> according to the <strong>PowerX Strategy</strong> by Markus Heitkoetter designed as a command line tool. This program gave me signals when to buy and sell stocks.',
+					'python_white.png',
+					'https://github.com/RobertFent/PowerXStocksAnalyzer',
+					'PowerXStocksAnalyzer'
+				)}
+			</div>
+		</div>
+		<div id="contact">
+			<h1>Contact</h1>
+		</div>
+		${ProductionNote()}
 	`;
 	// return html`
 	// 	<div>

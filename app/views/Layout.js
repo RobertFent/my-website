@@ -40,9 +40,12 @@ export const Layout = (Main) => {
 
 				<body data-appversion="${params.appVersion}">
 					<style>
+						html {
+							scroll-behavior: smooth;
+						}
 						me {
 							font-family: var(--font-sans);
-							background-color: black;
+							background-color: var(--color-primary);
     						background-image: url('/static/robert1.png');
 							background-repeat: no-repeat;
     						background-position: top right;
@@ -63,7 +66,7 @@ export const Layout = (Main) => {
 							border-radius: var(--radius-md);
 							
 						}
-						@media (min-width: 400px) and (max-width: 600px) {
+						@media (max-width: 600px) {
 							me {
 								background-position: top left;
 								background-size: 800px auto;
@@ -116,7 +119,8 @@ export const Layout = (Main) => {
 						<nav hx-target="main" hx-boost="true">
 							<a href="/#">Home</a>
 							<a href="/#about">About</a>
-							<a href="/cv">CV</a>
+							<a href="/#projects">Projects</a>
+							<a href="/#contact">Contact</a>
 						</nav>
 					</header>
 					<main hx-target="this" hx-swap="innerHTML">

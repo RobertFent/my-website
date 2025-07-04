@@ -25,3 +25,19 @@ document.addEventListener('htmx:afterProcessNode', (event) => {
 		}, htmx.parseInterval(timing));
 	}
 });
+
+let projectComponents = document.getElementsByClassName('project-component');
+for (const projectComponent of projectComponents) {
+	projectComponent.addEventListener('click', () => {
+		projectComponent
+			.getElementsByClassName('content')[0]
+			.classList.toggle('content-visible');
+		projectComponent.classList.toggle('clicked');
+	});
+	projectComponent.addEventListener('mouseleave', () => {
+		projectComponent
+			.getElementsByClassName('content')[0]
+			.classList.remove('content-visible');
+		projectComponent.classList.remove('clicked');
+	});
+}

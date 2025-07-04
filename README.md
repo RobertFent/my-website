@@ -74,3 +74,4 @@ npm install
 ## Notes
 
 -   use 60/30/10 rule for color scheme
+-   icons: https://icons8.com/icons/
