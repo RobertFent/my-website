@@ -22,8 +22,11 @@ export const Root = () => {
 			me h1 {
 				font-size: var(--size-14);
 			}
+			me #about {
+				margin-bottom: var(--size-8);
+			}
 			me #about p {
-				font-size: var(--size-6);
+				font-size: var(--size-5);
 			}
 			me #about img {
 				border-radius: var(--radius-xl);
@@ -31,6 +34,7 @@ export const Root = () => {
 			}
 			me #projects {
 				margin-top: var(--size-32);
+				margin-bottom: var(--size-8);
 			}
 			me #projects .project-components {
 				margin-top: var(--size-12);
@@ -41,6 +45,7 @@ export const Root = () => {
 				margin-top: var(--size-32);
 			}
 			me #about .about-items {
+				position: relative;
 				gap: var(--size-0);
 				justify-content: space-evenly;
 			}
@@ -53,6 +58,8 @@ export const Root = () => {
 				font-size: var(--size-6);
 			}
 			me #about .about-item ul {
+				position: absolute; /* Hinder ul from growing its parent */
+				max-width: 30%;
 				overflow: hidden;
 				max-height: 0vh;
 			}
@@ -97,6 +104,11 @@ export const Root = () => {
 				}
 				me #about .about-items {
 					flex-direction: column;
+				}
+				me #about .about-item ul {
+					position: relative;
+					max-width: 100%;
+					overflow: hidden;
 				}
 				me #projects {
 					margin-top: var(--size-16);
@@ -225,11 +237,11 @@ export const Root = () => {
 					'Weather-Forecast'
 				)}
 			</div>
-			<div id="contact">
-				<h1>Contact</h1>
-			</div>
-			${ProductionNote()}
 		</div>
+		<div id="contact">
+			<h1>Contact</h1>
+		</div>
+		${ProductionNote()}
 	`;
 	// return html`
 	// 	<div>
