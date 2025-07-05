@@ -58,7 +58,7 @@ export const ProjectComponent = (
 				@media (max-width: 900px) {
 					me {
 						flex: 1 1 100%;
-						max-width: 80vw;
+						max-width: 100vw;
 					}
 					me h1 {
 						font-size: var(--size-8);

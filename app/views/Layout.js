@@ -100,6 +100,7 @@ export const Layout = (Main) => {
 								me {
 									flex-direction: column;
 									align-items: flex-start;
+									margin-left: 0;
 								}
 
 								me nav {

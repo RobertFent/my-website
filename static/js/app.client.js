@@ -31,9 +31,12 @@ let aboutItems = document.getElementsByClassName('about-item');
 for (const aboutItem of aboutItems) {
 	aboutItem.addEventListener('click', () => {
 		for (const item of aboutItems) {
+			if (item === aboutItem) {
+				continue;
+			}
 			item.getElementsByTagName('ul')[0].classList.remove('li-visible');
 		}
-		aboutItem.getElementsByTagName('ul')[0].classList.add('li-visible');
+		aboutItem.getElementsByTagName('ul')[0].classList.toggle('li-visible');
 	});
 }
 

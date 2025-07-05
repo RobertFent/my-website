@@ -71,6 +71,10 @@ npm install
 -   overwrite logic -> currently all content from app is copied to app in docker and replaces everything
 -   Get the definitions for the core modules, (not working: docker cp stackzero-template-stackzero-1:/stackzero/core/definitions.js core)
 
+## UI todos
+
+-   add html into modules maybe and move stuff into app.css
+
 ## Notes
 
 -   use 60/30/10 rule for color scheme

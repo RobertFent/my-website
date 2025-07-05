@@ -66,6 +66,9 @@ export const Root = () => {
 				me .flex-row {
 					gap: var(--size-12);
 				}
+				me #about {
+					margin-top: var(--size-32);
+				}
 			}
 			@media (max-width: 900px) {
 				me {
@@ -83,6 +86,7 @@ export const Root = () => {
 					max-width: 350px;
 				}
 				me #about {
+					margin-top: 0;
 					flex-direction: column;
 				}
 				me #about .about-items {
@@ -98,6 +102,17 @@ export const Root = () => {
 				me #contact {
 					margin-top: var(--size-16);
 					flex-direction: column;
+				}
+				@media (max-width: 600px) {
+					me {
+						margin: var(--size-2);
+					}
+					me #about img {
+						max-width: 100%;
+					}
+					me #about .about-item {
+						margin-left: 0;
+					}
 				}
 			}
 		</style>
