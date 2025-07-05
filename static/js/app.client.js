@@ -5,13 +5,41 @@ document.addEventListener('htmx:configRequest', (event) => {
 	event.detail.headers['x-app-version'] = appversion;
 });
 
-// remove closeables -> atm its only the alert
+// register listeners for click only here -> manually on element does not get registered when doing dynamic routing
 document.addEventListener('click', (event) => {
+	// remove closeables -> atm its only the alert
 	const close = event.target.closest('[data-js-close]');
 	if (close) {
 		const closeable = close.closest('[data-js-closeable]');
 		closeable.remove();
 	}
+
+	const aboutItem = event.target.closest('.about-item');
+	if (aboutItem) {
+		aboutItem.querySelector('ul').classList.toggle('li-visible');
+	}
+
+	// toggle visibility and clicked of project cards
+	const projectComponent = event.target.closest('.project-component');
+	if (projectComponent) {
+		projectComponent
+			.querySelector('.content')
+			?.classList.toggle('content-visible');
+		projectComponent.classList.toggle('clicked');
+	}
+});
+
+let latestProjectComponent = null;
+document.addEventListener('mouseover', (event) => {
+	const projectComponent = event.target.closest('.project-component');
+	if (latestProjectComponent && latestProjectComponent !== projectComponent) {
+		latestProjectComponent
+			.querySelector('.content')
+			?.classList.remove('content-visible');
+		latestProjectComponent.classList.remove('clicked');
+	}
+
+	latestProjectComponent = projectComponent;
 });
 
 // auto remove the proper elements -> atm its only the alert
@@ -25,34 +53,3 @@ document.addEventListener('htmx:afterProcessNode', (event) => {
 		}, htmx.parseInterval(timing));
 	}
 });
-
-// add click animations to about me lists
-let aboutItems = document.getElementsByClassName('about-item');
-for (const aboutItem of aboutItems) {
-	aboutItem.addEventListener('click', () => {
-		for (const item of aboutItems) {
-			if (item === aboutItem) {
-				continue;
-			}
-			item.getElementsByTagName('ul')[0].classList.remove('li-visible');
-		}
-		aboutItem.getElementsByTagName('ul')[0].classList.toggle('li-visible');
-	});
-}
-
-// add click and exit hover animations to project cards
-let projectComponents = document.getElementsByClassName('project-component');
-for (const projectComponent of projectComponents) {
-	projectComponent.addEventListener('click', () => {
-		projectComponent
-			.getElementsByClassName('content')[0]
-			.classList.toggle('content-visible');
-		projectComponent.classList.toggle('clicked');
-	});
-	projectComponent.addEventListener('mouseleave', () => {
-		projectComponent
-			.getElementsByClassName('content')[0]
-			.classList.remove('content-visible');
-		projectComponent.classList.remove('clicked');
-	});
-}

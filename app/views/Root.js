@@ -16,11 +16,14 @@ export const Root = () => {
 			me #home {
 				display: flex;
 				flex-direction: column;
-				justify-content: center;
-				height: 90vh;
+				margin-top: var(--size-32);
+				height: 70vh;
 			}
 			me h1 {
 				font-size: var(--size-14);
+			}
+			me #about p {
+				font-size: var(--size-6);
 			}
 			me #about img {
 				border-radius: var(--radius-xl);
@@ -68,6 +71,9 @@ export const Root = () => {
 				}
 				me #about {
 					margin-top: var(--size-32);
+				}
+				me #about p {
+					font-size: var(--size-4);
 				}
 			}
 			@media (max-width: 900px) {

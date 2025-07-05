@@ -13,7 +13,7 @@ export const Layout = (Main) => {
 					/>
 					<meta name="description" content="Robots Website" />
 					<!-- Scripts -> these are loaded from static folder instead of cdn to prevent reliance on it -->
-					<script src="/static/js/htmx@2.0.4.client.js" /></script>
+					<script src="/static/js/htmx@2.0.4.client.js"></script>
 					<script src="/static/js/css-scope-inline.js"></script>
 					<script>
 						// The default value includes 'class' as well.
@@ -46,11 +46,11 @@ export const Layout = (Main) => {
 						me {
 							font-family: var(--font-sans);
 							background-color: var(--color-primary);
-    						background-image: url('/static/robert1.png');
+							background-image: url('/static/robert1.png');
 							background-repeat: no-repeat;
-    						background-position: top right;
+							background-position: top right;
 							background-size: 1000px auto;
-							color: var(--color-secondary)
+							color: var(--color-secondary);
 						}
 						body {
 							display: flex;
@@ -64,7 +64,6 @@ export const Layout = (Main) => {
 							gap: var(--size-4);
 							padding: var(--size-4);
 							border-radius: var(--radius-md);
-							
 						}
 						@media (max-width: 600px) {
 							me {
@@ -85,13 +84,13 @@ export const Layout = (Main) => {
 								display: flex;
 								align-items: center;
 								justify-content: space-between;
-      							padding: var(--size-4);
+								padding: var(--size-4);
 								margin-left: var(--size-8);
 							}
-							me .name-heading{
+							me .name-heading {
 								font-size: var(--size-16);
 							}
-							me a {						
+							me a {
 								margin-right: var(--size-6);
 								color: var(--color-secondary);
 								font-size: var(--size-6);
@@ -102,20 +101,26 @@ export const Layout = (Main) => {
 									align-items: flex-start;
 									margin-left: 0;
 								}
-
+								me .name-heading {
+									font-size: var(--size-10);
+								}
 								me nav {
+									display: flex;
+									flex-direction: column;
 									flex-wrap: wrap;
 									margin-top: var(--size-2);
 								}
 
 								me nav a {
+									font-size: var(--size-6);
 									margin-left: 0;
 									margin-right: var(--size-3);
 								}
 							}
 						</style>
 						<div class="name-heading">
-						<span style="color: var(--color-accent);">R</span>obert
+							<span style="color: var(--color-accent);">R</span
+							>obert
 						</div>
 						<nav hx-target="main" hx-boost="true">
 							<a href="/#">Home</a>
@@ -137,8 +142,11 @@ export const Layout = (Main) => {
 								padding: var(--size-2) 0;
 							}
 						</style>
-						© ${new Date().getFullYear()}  
-						Based on work by <a href="https://sizovs.net">Eduards Sizovs</a>. Enhanced & maintained by <a href="https://robertfent.com">Robert Fent</a>. All rights reserved.
+						© ${new Date().getFullYear()} Based on work by
+						<a href="https://sizovs.net">Eduards Sizovs</a>.
+						Enhanced & maintained by
+						<a href="https://robertfent.com">Robert Fent</a>. All
+						rights reserved.
 					</footer>
 				</body>
 			</html>
