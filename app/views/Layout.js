@@ -147,6 +147,24 @@ export const Layout = (Main) => {
 						Enhanced & maintained by
 						<a href="https://robertfent.com">Robert Fent</a>. All
 						rights reserved.
+						<br />
+						<p>
+							<a
+								target="_blank"
+								href="https://icons8.com/icon/3tC9EQumUAuq/github"
+								>GitHub</a
+							>
+							and
+							<a
+								target="_blank"
+								href="https://icons8.com/icon/8808/linkedin"
+								>LinkedIn</a
+							>
+							icon by
+							<a target="_blank" href="https://icons8.com"
+								>Icons8</a
+							>
+						</p>
 					</footer>
 				</body>
 			</html>

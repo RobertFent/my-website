@@ -1,8 +1,9 @@
 import { html } from '../../core/modules/html.js';
+import { ContactForm } from '../components/ContactForm.js';
 import { ProductionNote } from '../components/ProductionNote.js';
 import { ProjectComponent } from '../components/ProjectComponent.js';
 
-export const Root = () => {
+export const Root = ({ entries }) => {
 	return html`
 		<style>
 			me {
@@ -32,18 +33,6 @@ export const Root = () => {
 				border-radius: var(--radius-xl);
 				min-width: 250px;
 			}
-			me #projects {
-				margin-top: var(--size-32);
-				margin-bottom: var(--size-8);
-			}
-			me #projects .project-components {
-				margin-top: var(--size-12);
-				flex-wrap: wrap;
-				justify-content: flex-start;
-			}
-			me #contact {
-				margin-top: var(--size-32);
-			}
 			me #about .about-items {
 				position: relative;
 				gap: var(--size-0);
@@ -68,6 +57,60 @@ export const Root = () => {
 			}
 			me #about .about-item .li-visible {
 				max-height: 40vh;
+			}
+			me #projects {
+				margin-top: var(--size-32);
+				margin-bottom: var(--size-8);
+			}
+			me #projects .project-components {
+				margin-top: var(--size-12);
+				flex-wrap: wrap;
+				justify-content: flex-start;
+			}
+			me #contact {
+				margin-top: var(--size-32);
+			}
+			me #contact .contact-components {
+				margin-top: var(--size-12);
+				justify-content: space-between;
+			}
+			me #contact .contact-left {
+				display: flex;
+				flex-direction: column;
+			}
+			me #contact .contact-entry {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				margin-top: var(--size-8);
+				gap: var(--size-6);
+			}
+			me #contact .contact-entry a {
+				font-size: var(--size-5);
+			}
+			me .email-icon {
+				background: url('/static/icons/email_white.png');
+				background-size: auto 100%;
+				height: 50px;
+				width: 50px;
+				display: block;
+			}
+			me .github-icon {
+				background: url('/static/icons/github_white.svg');
+				background-size: auto 100%;
+				height: 50px;
+				width: 50px;
+				display: block;
+			}
+			me .linkedin-icon {
+				background: url('/static/icons/linkedin_white.svg');
+				background-size: auto 100%;
+				height: 50px;
+				width: 50px;
+				display: block;
+			}
+			me #contact .contact-right {
+				width: 40vw;
 			}
 			@media (max-width: 1200px) {
 				me {
@@ -223,7 +266,12 @@ export const Root = () => {
 					'server_white.png'
 				)}
 				${ProjectComponent(
-					'Stock Analyzer',
+					'Hetzner Migration',
+					'I migrated our infrastructure from <strong>AWS</strong> to <strong>Hetzner</strong>, reducing monthly costs from ~4.000€ to ~100€ — saving around 3.900€ per month. The setup previously relied mostly on EC2 and ECS, which I fully replaced by consolidating all services into a single <a href="https://docs.docker.com/compose/">Docker Compose</a> stack. I added <a href="https://hub.docker.com/r/nginxproxy/nginx-proxy">NGINX</a> as a reverse proxy and automated HTTPS via <a href="https://hub.docker.com/r/nginxproxy/acme-companion">acme</a>. Everything is now containerized, reproducible, and fully under my control — deployed on a performant Hetzner server.',
+					'migration_white.png'
+				)}
+				${ProjectComponent(
+					'Stocks Analyzer',
 					'I built a stock automation tool in <a href="https://www.python.org/">Python</a> based on the <strong>PowerX Strategy</strong> by Markus Heitkoetter. Designed as a command line application, it generated buy and sell signals to support my trading decisions — all fully local and under my control.',
 					'python_white.png',
 					'https://github.com/RobertFent/PowerXStocksAnalyzer',
@@ -240,154 +288,31 @@ export const Root = () => {
 		</div>
 		<div id="contact">
 			<h1>Contact</h1>
+			<div class="contact-components flex-row">
+				<div class="contact-left">
+					<div class="contact-entry">
+						<span class="email-icon"></span>
+						<a href="mailto:info@robertfent.com"
+							>info@robertfent.com</a
+						>
+					</div>
+					<div class="contact-entry">
+						<span class="github-icon"></span>
+						<a href="https://github.com/RobertFent"
+							>github.com/RobertFent</a
+						>
+					</div>
+					<div class="contact-entry">
+						<span class="linkedin-icon"></span>
+						<a
+							href="https://www.linkedin.com/in/robert-fent-905140280"
+							>linkedin.com/in/robert-fent-905140280/</a
+						>
+					</div>
+				</div>
+				<div class="contact-right">${ContactForm(entries)}</div>
+			</div>
 		</div>
 		${ProductionNote()}
 	`;
-	// return html`
-	// 	<div>
-	// 		<style>
-	// 			me section {
-	// 				display: flex;
-	// 				flex-direction: column;
-	// 				justify-content: center;
-	// 				padding: var(--size-8);
-	// 				text-align: center;
-	// 				min-height: 8rem;
-	// 			}
-	// 			me .main-section {
-	// 				display: flex;
-	// 				flex-wrap: wrap;
-	// 				gap: var(--size-8);
-	// 				margin-top: var(--size-6);
-	// 			}
-	// 			me .profile-content {
-	// 				flex: 1 1 30%;
-	// 			}
-	// 			me .profile-upper-content {
-	// 				padding: var(--size-6);
-	// 				display: flex;
-	// 				align-items: center;
-	// 				gap: var(--size-8);
-	// 			}
-	// 			me .profile-upper-content a {
-	// 				color: var(--color-primary);
-	// 				text-decoration: underline;
-	// 				margin-top: var(--size-60);
-	// 			}
-	// 			me .profile-lower-content {
-	// 				padding: var(--size-6);
-	// 				text-align: left;
-	// 			}
-	// 			me .main-section p {
-	// 				margin-bottom: var(--size-4);
-	// 			}
-	// 			me .tech-content {
-	// 				flex: 1 1 40%;
-	// 				display: flex;
-	// 				flex-direction: column;
-	// 				justify-content: center;
-	// 			}
-	// 			@media (max-width: 1300px) {
-	// 				me .profile-upper-content img {
-	// 					width: 100%;
-	// 				}
-	// 				me .profile-upper-content {
-	// 					flex-direction: column;
-	// 					text-align: center;
-	// 				}
-	// 				me .profile-content {
-	// 					flex: 1 1 100%;
-	// 				}
-	// 				me section {
-	// 					padding: var(--size-0);
-	// 					margin-bottom: var(--size-6);
-	// 				}
-	// 				me .main-section {
-	// 					margin-top: var(--size-8);
-	// 				}
-
-	// 				me .tech-content {
-	// 					flex: 1 1 100%;
-	// 				}
-	// 			}
-	// 		</style>
-	// 		<section class="colored-component">
-	// 			<h1>Robert Fent</h1>
-	// 			<h3 style="margin-top: var(--size-2)">
-	// 				Full Stack Software Developer & Tech Enthusiast
-	// 			</h3>
-	// 		</section>
-	// 		<section>
-	// 			<h2>About this Website and Me</h2>
-	// 			<hr />
-	// 			<div class="main-section">
-	// 				<!-- Left Column: Profile -->
-	// 				<div class="profile-content">
-	// 					<div class="colored-component">
-	// 						<div class="profile-upper-content">
-	// 							<img
-	// 								src="/static/me.jpeg"
-	// 								alt="Photo of me"
-	// 								style="height: 100%; max-width: 300px; border-radius: var(--radius-xl); box-shadow: 0 2px 12px #0002; margin: 0 auto;"
-	// 							/>
-	// 							<div style="text-align: left;">
-	//
-	// 						</div>
-	// 					</div>
-	// 				</div>
-	// 				<!-- Right Column: Tech Description -->
-	// 				<div class="tech-content">
-	// 					<h2 style="margin-bottom: var(--size-8);">StackZero</h2>
-	// 					<p>
-	// 						I built this site using my own lightweight framework
-	// 						called <strong>StackZero</strong>, which is based on
-	// 						a simple and efficient stack:
-	// 						<a href="https://nodejs.org">Node.js</a> with
-	// 						<a href="https://fastify.dev/">Fastify</a> as the
-	// 						backend, <a href="https://htmx.org/">htmx</a> for as
-	// 						frontend and
-	// 						<a href="https://sqlite.org/">SQLite</a> as the
-	// 						simple database — all wrapped in
-	// 						<a href="https://www.docker.com/">Docker</a> and
-	// 						deployed via
-	// 						<a href="https://github.com/features/actions"
-	// 							>GitHub Actions</a
-	// 						>. The entire setup is designed to be low-cost
-	// 						(under 5€ per month, including DNS via
-	// 						<a href="https://www.ionos.de/">Ionos</a> and
-	// 						hosting on a
-	// 						<a href="https://www.hetzner.com/">Hetzner</a>
-	// 						server), transparent, and fully under my control —
-	// 						with no hidden dependencies or vendor lock-in. I
-	// 						also use
-	// 						<a href="https://playwright.dev/">Playwright</a> to
-	// 						run end-to-end browser tests, ensuring that
-	// 						everything works reliably across deployments.
-	// 					</p>
-	// 					<hr style="margin-top: 2rem; margin-bottom: 2rem;" />
-	// 					<p>
-	// 						<strong>
-	// 							I offer StackZero at several freelance websites.
-	// 							Feel free to visit the product page at
-	// 							<a
-	// 								href="https://robertfentastic.gumroad.com/l/niqtv"
-	// 								>Gumroad</a
-	// 							>
-	// 							or
-	// 							<a
-	// 								href="https://leanstack.lemonsqueezy.com/buy/03a1ea26-6aa8-4465-a8f0-0b7ad91388d9"
-	// 								>Lemon Squeezy</a
-	// 							>
-	// 							or simply check out the git project at
-	// 							<a
-	// 								href="https://github.com/RobertFent/StackZero"
-	// 								>GitHub</a
-	// 							>:-)
-	// 						</strong>
-	// 					</p>
-	// 				</div>
-	// 			</div>
-	// 		</section>
-	// 	</div>
-	// `;
 };

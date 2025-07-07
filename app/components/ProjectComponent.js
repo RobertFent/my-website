@@ -38,7 +38,7 @@ export const ProjectComponent = (
 					overflow: hidden;
 					max-height: 0vh;
 					transition-property: all;
-					transition-duration: 0.5s;
+					transition-duration: 1s;
 					transition-timing-function: cubic-bezier(1, 1, 1, 1);
 				}
 				me .content-visible {

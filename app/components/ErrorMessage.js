@@ -9,9 +9,9 @@ import { html } from '../../core/modules/html.js';
  * @param {string} [param0.error='']
  * @returns {string}
  */
-export const Error = ({ error = '' } = {}) => {
+export const ErrorMessage = ({ error = '' } = {}) => {
 	return html`
-		<small data-testid="guestbookEntry-error" id="guestbookEntry-error">
+		<small id="error-message">
 			<style>
 				me {
 					color: var(--color-red-600);

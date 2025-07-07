@@ -1,4 +1,4 @@
-import { Error } from '../components/Error.js';
+import { Error } from '../../app/components/ErrorMessage.js';
 import { html } from '../../core/modules/html.js';
 
 export const Guestbook = ({ entries }) => {
