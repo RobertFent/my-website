@@ -7,8 +7,11 @@ import { Root } from '../views/Root.js';
 export const init = async ({ app, db }) => {
 	// initially load contact entries
 	const contactEntries = db
-		.prepare(sql`SELECT * FROM contact_entries LIMIT 5`)
+		.prepare(
+			sql`SELECT * FROM contact_entries ORDER BY timestamp DESC LIMIT 5 `
+		)
 		.all();
+	console.log(contactEntries);
 	app.get('/', async (_, reply) => {
 		return reply.render(Root, { entries: contactEntries });
 	});

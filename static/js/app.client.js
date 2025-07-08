@@ -29,6 +29,10 @@ document.addEventListener('click', (event) => {
 	}
 });
 
+document.addEventListener('submit', (event) => {
+	alert('foo');
+});
+
 let latestProjectComponent = null;
 document.addEventListener('mouseover', (event) => {
 	const projectComponent = event.target.closest('.project-component');

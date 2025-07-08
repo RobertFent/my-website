@@ -16,9 +16,6 @@ export const ProjectComponent = (
 					padding: var(--size-8);
 					align-self: flex-start;
 					cursor: pointer;
-					&:not(.clicked):hover {
-						background-color: var(--color-accent);
-					}
 					flex: 1 1 calc(30%);
 					box-sizing: border-box;
 					max-width: calc(30% - 20px);
@@ -62,6 +59,14 @@ export const ProjectComponent = (
 					}
 					me h1 {
 						font-size: var(--size-7);
+					}
+				}
+				/* disable project comp coloring on mobile devices */
+				@media (hover: hover) and (pointer: fine) {
+					me {
+						&:not(.clicked):hover {
+							background-color: var(--color-accent);
+						}
 					}
 				}
 			</style>

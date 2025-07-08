@@ -22,6 +22,7 @@ export const Contact = ({ entries }) => {
 			me .contact-left {
 				display: flex;
 				flex-direction: column;
+				margin-top: var(--size-4);
 			}
 			me .contact-entry {
 				display: flex;
@@ -96,12 +97,17 @@ export const Contact = ({ entries }) => {
 				outline: 2px solid var(--color-accent);
 				outline-offset: 2px;
 			}
-			me button:hover {
-				background: var(--color-accent);
+			me #submit-message {
+				margin-top: var(--size-4);
+				text-align: center;
+				font-size: var(--size-5);
+				font-weight: bold;
+				max-height: 0;
+				overflow: hidden;
 			}
 			me .table-label {
 				font-weight: bold;
-				margin-top: var(--size-12);
+				margin-top: var(--size-16);
 				margin-bottom: var(--size-4);
 				font-size: var(--size-6);
 				text-align: left;
@@ -142,6 +148,12 @@ export const Contact = ({ entries }) => {
 				}
 				me .contact-right {
 					width: 100%;
+				}
+			}
+			/* disable hover on mobile devices */
+			@media (hover: hover) and (pointer: fine) {
+				button:hover {
+					background: var(--color-accent);
 				}
 			}
 		</style>
@@ -196,6 +208,7 @@ export const Contact = ({ entries }) => {
 					<button type="submit">Submit Entry</button>
 					${ErrorMessage()}
 				</form>
+				<p id="submit-message">Entry has been added. Thank you! :-)</p>
 			</div>
 		</div>
 		<p class="table-label">Latest messages ...</p>

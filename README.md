@@ -73,6 +73,7 @@ npm install
 
 ## UI todos
 
+-   popup after created entry + table overflow for entries on mobile
 -   add html into modules maybe and move stuff into app.css
 -   unify the margin between elements -> can easily be done after modularization
 

@@ -26,7 +26,9 @@ export const init = async ({ app, db }) => {
 
 	const render = async (_, reply) => {
 		const contactEntries = db
-			.prepare(sql`SELECT * FROM contact_entries LIMIT 5`)
+			.prepare(
+				sql`SELECT * FROM contact_entries ORDER BY timestamp DESC LIMIT 5`
+			)
 			.all();
 
 		return reply.render(Contact, { entries: contactEntries });
