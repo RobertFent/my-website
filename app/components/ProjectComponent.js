@@ -61,7 +61,7 @@ export const ProjectComponent = (
 						max-width: 100vw;
 					}
 					me h1 {
-						font-size: var(--size-8);
+						font-size: var(--size-7);
 					}
 				}
 			</style>

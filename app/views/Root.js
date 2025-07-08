@@ -1,5 +1,5 @@
 import { html } from '../../core/modules/html.js';
-import { ContactForm } from '../components/ContactForm.js';
+import { Contact } from '../components/Contact.js';
 import { ProductionNote } from '../components/ProductionNote.js';
 import { ProjectComponent } from '../components/ProjectComponent.js';
 
@@ -66,51 +66,6 @@ export const Root = ({ entries }) => {
 				margin-top: var(--size-12);
 				flex-wrap: wrap;
 				justify-content: flex-start;
-			}
-			me #contact {
-				margin-top: var(--size-32);
-			}
-			me #contact .contact-components {
-				margin-top: var(--size-12);
-				justify-content: space-between;
-			}
-			me #contact .contact-left {
-				display: flex;
-				flex-direction: column;
-			}
-			me #contact .contact-entry {
-				display: flex;
-				flex-direction: row;
-				align-items: center;
-				margin-top: var(--size-8);
-				gap: var(--size-6);
-			}
-			me #contact .contact-entry a {
-				font-size: var(--size-5);
-			}
-			me .email-icon {
-				background: url('/static/icons/email_white.png');
-				background-size: auto 100%;
-				height: 50px;
-				width: 50px;
-				display: block;
-			}
-			me .github-icon {
-				background: url('/static/icons/github_white.svg');
-				background-size: auto 100%;
-				height: 50px;
-				width: 50px;
-				display: block;
-			}
-			me .linkedin-icon {
-				background: url('/static/icons/linkedin_white.svg');
-				background-size: auto 100%;
-				height: 50px;
-				width: 50px;
-				display: block;
-			}
-			me #contact .contact-right {
-				width: 40vw;
 			}
 			@media (max-width: 1200px) {
 				me {
@@ -286,33 +241,7 @@ export const Root = ({ entries }) => {
 				)}
 			</div>
 		</div>
-		<div id="contact">
-			<h1>Contact</h1>
-			<div class="contact-components flex-row">
-				<div class="contact-left">
-					<div class="contact-entry">
-						<span class="email-icon"></span>
-						<a href="mailto:info@robertfent.com"
-							>info@robertfent.com</a
-						>
-					</div>
-					<div class="contact-entry">
-						<span class="github-icon"></span>
-						<a href="https://github.com/RobertFent"
-							>github.com/RobertFent</a
-						>
-					</div>
-					<div class="contact-entry">
-						<span class="linkedin-icon"></span>
-						<a
-							href="https://www.linkedin.com/in/robert-fent-905140280"
-							>linkedin.com/in/robert-fent-905140280/</a
-						>
-					</div>
-				</div>
-				<div class="contact-right">${ContactForm(entries)}</div>
-			</div>
-		</div>
+		<div id="contact">${Contact({ entries })}</div>
 		${ProductionNote()}
 	`;
 };

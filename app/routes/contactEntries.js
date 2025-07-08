@@ -1,16 +1,12 @@
 import { ErrorMessage } from '../components/ErrorMessage.js';
 import { sql } from '../../core/modules/database/database.js';
 import { randomUUID } from 'node:crypto';
-import { ContactForm } from '../components/ContactForm.js';
+import { Contact } from '../components/Contact.js';
 
 /**
  * @param {{ app: import("fastify").FastifyInstance, db: import("better-sqlite3").Database }}
  */
 export const init = async ({ app, db }) => {
-	app.get('/contact_entries', async (request, reply) => {
-		return render(request, reply);
-	});
-
 	app.post('/contact_entries', async (request, reply) => {
 		const { content, author } = request.body;
 		if (!content || !author) {
@@ -33,6 +29,6 @@ export const init = async ({ app, db }) => {
 			.prepare(sql`SELECT * FROM contact_entries LIMIT 5`)
 			.all();
 
-		return reply.render(ContactForm, { entries: contactEntries });
+		return reply.render(Contact, { entries: contactEntries });
 	};
 };

@@ -74,6 +74,7 @@ npm install
 ## UI todos
 
 -   add html into modules maybe and move stuff into app.css
+-   unify the margin between elements -> can easily be done after modularization
 
 ## Notes
 
