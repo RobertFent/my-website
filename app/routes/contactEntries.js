@@ -31,6 +31,9 @@ export const init = async ({ app, db }) => {
 			)
 			.all();
 
-		return reply.render(Contact, { entries: contactEntries });
+		return reply.render(Contact, {
+			entries: contactEntries,
+			addSuccess: 'true'
+		});
 	};
 };
