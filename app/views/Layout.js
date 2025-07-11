@@ -126,6 +126,7 @@ export const Layout = (Main) => {
 							<a href="/#">Home</a>
 							<a href="/#about">About</a>
 							<a href="/#projects">Projects</a>
+							<a href="/#services">Services</a>
 							<a href="/#contact">Contact</a>
 							<a href="/cv">CV</a>
 						</nav>
@@ -154,11 +155,17 @@ export const Layout = (Main) => {
 								href="https://icons8.com/icon/3tC9EQumUAuq/github"
 								>GitHub</a
 							>
-							and
+							,
 							<a
 								target="_blank"
 								href="https://icons8.com/icon/8808/linkedin"
 								>LinkedIn</a
+							>
+							and
+							<a
+								target="_blank"
+								href="https://icons8.com/icon/111591/medium-monogram"
+								>Medium</a
 							>
 							icon by
 							<a target="_blank" href="https://icons8.com"

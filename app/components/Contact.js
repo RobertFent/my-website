@@ -13,9 +13,6 @@ export const Contact = ({ entries, addSuccess }) => {
 	return html`
 		<div id="inner-contact">
 			<style>
-				me {
-					margin-top: var(--size-32);
-				}
 				me .contact-components {
 					margin-top: var(--size-12);
 					justify-content: space-between;
@@ -23,7 +20,6 @@ export const Contact = ({ entries, addSuccess }) => {
 				me .contact-left {
 					display: flex;
 					flex-direction: column;
-					margin-top: var(--size-4);
 				}
 				me .contact-entry {
 					display: flex;
@@ -165,6 +161,9 @@ export const Contact = ({ entries, addSuccess }) => {
 					}
 					me .contact-right {
 						width: 100%;
+					}
+					me .table-label {
+						margin-top: 0;
 					}
 				}
 				/* disable hover on mobile devices */

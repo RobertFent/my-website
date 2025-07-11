@@ -3,26 +3,27 @@ import { html } from '../../core/modules/html.js';
 export const ProjectComponent = (
 	header,
 	content,
+	width,
 	iconName,
-	gitHubLink,
-	gitHubLinkName
+	linkName,
+	link,
+	linkDescription
 ) => {
 	return html`
 		<div class="project-component">
 			<style>
 				me {
-					background-color: #2b2b2b;
+					background-color: var(--color-primary-grey);
 					border-radius: var(--radius-md);
 					padding: var(--size-8);
 					align-self: flex-start;
 					cursor: pointer;
-					flex: 1 1 calc(30%);
+					flex: 1 1 calc(${width}%);
 					box-sizing: border-box;
-					max-width: calc(30% - 20px);
+					max-width: calc(${width}%);
 				}
 				me h1 {
 					font-size: var(--size-6);
-					white-space: nowrap;
 				}
 				me .icon {
 					background: url('/static/icons/${iconName}');
@@ -32,6 +33,7 @@ export const ProjectComponent = (
 					display: block;
 				}
 				me .content {
+					margin-top: var(--size-2);
 					overflow: hidden;
 					max-height: 0vh;
 					transition-property: all;
@@ -74,10 +76,10 @@ export const ProjectComponent = (
 			<h1>${header}</h1>
 			<div class="content">
 				<p>${content}</p>
-				${gitHubLink
+				${link
 					? html`<p class="git-link">
-							GitHub:
-							<a href="${gitHubLink}">${gitHubLinkName}</a>.
+							${linkName}:
+							<a href="${link}">${linkDescription}</a>.
 					  </p>`
 					: ''}
 			</div>

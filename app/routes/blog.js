@@ -1,4 +1,4 @@
-import { Blog } from '../views/Blog.js';
+// import { Blog } from '../views/Blog.js';
 
 /**
  * @param {{ app: import("fastify").FastifyInstance, db: import("better-sqlite3").Database }}
