@@ -1,20 +1,7 @@
 import { useState } from 'react';
-
-const EMAIL = 'info@robertfent.com';
-
-const contacts = [
-	{ icon: 'email_white.png', href: `mailto:${EMAIL}`, label: EMAIL },
-	{
-		icon: 'github_white.svg',
-		href: 'https://github.com/RobertFent',
-		label: 'github.com/RobertFent'
-	},
-	{
-		icon: 'linkedin_white.svg',
-		href: 'https://www.linkedin.com/in/robert-fent-905140280',
-		label: 'linkedin.com/in/robert-fent'
-	}
-];
+import Section from './Section.jsx';
+import Icon from './Icon.jsx';
+import { EMAIL, links } from '../content.js';
 
 export default function Contact() {
 	const [author, setAuthor] = useState('');
@@ -31,54 +18,70 @@ export default function Contact() {
 	};
 
 	return (
-		<div id="contact">
-			<h1>Contact</h1>
-			<div className="contact-components flex-row">
-				<div className="contact-left">
-					{contacts.map(({ icon, href, label }) => (
-						<div className="link-entry" key={href}>
-							<span
-								className="link-icon"
-								style={{ backgroundImage: `url(/icons/${icon})` }}
-							/>
-							<a href={href}>{label}</a>
-						</div>
+		<Section
+			id="contact"
+			index={4}
+			title="Contact"
+			lead="Have a project in mind or just want to say hello? My inbox is open."
+		>
+			<div className="contact-grid">
+				<ul className="link-list reveal">
+					{links.map(({ icon, href, label }) => (
+						<li key={href}>
+							<a
+								href={href}
+								target={href.startsWith('http') ? '_blank' : undefined}
+								rel="noreferrer"
+							>
+								<span className="icon-badge small">
+									<Icon name={icon} size={20} />
+								</span>
+								<span>{label}</span>
+								<span className="link-arrow" aria-hidden="true">
+									→
+								</span>
+							</a>
+						</li>
 					))}
-				</div>
-				<div className="contact-right">
-					<h2>Leave me a nice message ✨</h2>
-					<form onSubmit={onSubmit}>
-						<div className="form-group">
-							<label htmlFor="author">Your name</label>
-							<input
-								type="text"
-								id="author"
-								name="author"
-								required
-								placeholder="Alexander Fent"
-								value={author}
-								onChange={(e) => setAuthor(e.target.value)}
-							/>
-						</div>
-						<div className="form-group">
-							<label htmlFor="content">Your message</label>
-							<input
-								type="text"
-								id="content"
-								name="content"
-								required
-								placeholder="Howdy!🤠"
-								value={content}
-								onChange={(e) => setContent(e.target.value)}
-							/>
-						</div>
-						<button type="submit">Send via E-Mail</button>
-					</form>
-					<p className={`submit-message ${sent ? 'show-message' : ''}`}>
-						Opening your mail app … thank you! :-)
+				</ul>
+
+				<form
+					className="card contact-form reveal"
+					style={{ '--delay': '100ms' }}
+					onSubmit={onSubmit}
+				>
+					<h3>Leave me a message</h3>
+					<label>
+						Your name
+						<input
+							type="text"
+							name="author"
+							required
+							autoComplete="name"
+							placeholder="Jane Doe"
+							value={author}
+							onChange={(e) => setAuthor(e.target.value)}
+						/>
+					</label>
+					<label>
+						Your message
+						<textarea
+							name="content"
+							required
+							rows={4}
+							placeholder="Hi Robert, …"
+							value={content}
+							onChange={(e) => setContent(e.target.value)}
+						/>
+					</label>
+					<button type="submit" className="btn btn-primary">
+						Send via e-mail
+					</button>
+					<p className={`form-note ${sent ? 'show' : ''}`} aria-live="polite">
+						Opening your mail app — thank you!
 					</p>
-				</div>
+				</form>
 			</div>
-		</div>
+		</Section>
 	);
 }

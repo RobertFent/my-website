@@ -25,14 +25,18 @@ Every push to `main` deploys automatically afterwards.
 
 ```
 index.html            entry point
-public/               static assets (photos, icons, CV pdf, favicon)
+public/               static assets (portrait, photo, icons, CV pdf, favicon)
 src/
-  main.jsx            React bootstrap
+  main.jsx            React bootstrap (font, styles, Vercel analytics)
   App.jsx             tiny router ("/" one-pager, "/cv" CV viewer)
-  index.css           all styles
-  reset.css           CSS reset + design tokens
-  components/         Header, Home, About, Projects, Services, Contact, Blog, CV, Footer, Card
+  content.js          all copy: hero, about, projects, services, links
+  useReveal.js        scroll-in animation hook
+  index.css           all styles (design tokens at the top)
+  reset.css           CSS reset
+  components/         Header, Hero, Section, About, Projects, Services, Contact, CV, Footer, Icon
 ```
+
+To change text, edit `src/content.js` — the components only render what is in there.
 
 ## Analytics
 
@@ -41,4 +45,5 @@ Vercel Web Analytics and Speed Insights are wired in via `<Analytics />` and `<S
 ## Notes
 
 - The contact form opens the visitor's mail client with the message prefilled (`mailto:`), so no backend is required.
+- Inter is self-hosted via `@fontsource-variable/inter`, so no requests go to Google Fonts.
 - Icons by [Icons8](https://icons8.com).
