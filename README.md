@@ -1,82 +1,40 @@
-![StackZero Frozen Icon](stackzero.png)
+# Personal Portfolio Website
 
-# Template for StackZero SaaS
+Single-page React app built with [Vite](https://vite.dev), deployed to [Vercel](https://vercel.com).
 
-This is the template repository for [StackZero](https://github.com/RobertFent/StackZero).<br>
-
-Start building minimal SaaS apps with Docker & HTMX in minutes - how to
-
-## 🚀 Quick Start
-
-```bash
-git clone https://github.com/RobertFent/Stackzero-template.git
-cd Stackzero-template
-cp .env-template .env
-```
-
-fill out .env and then run following command:
-
-```bash
-docker compose up -d
-```
-
-## 🛠️ How to Customize
-
-Create your own routes and HTMX pages by editing the `app/` folder.<br>
-You can:
-
--   Add or replace HTMX views
--   Define new routes in `app/routes.js`
--   Use the example templates in `templates/` to get started quickly
-
-Then launch everything with docker:
-
-```bash
-docker compose up -d --pull always
-```
-
-If you want to update to a specific version just edit the image tag in the dockerfile and run the command from above
-
-## 🧪 Local Development
-
-Use the dev setup with hot-reloading:
-
-```bash
-docker compose -f docker-compose-dev.yml up --pull always
-```
-
--   Your local app/ folder will be mounted
--   Code changes trigger automatic reloads
--   Use the examples in /templates as a starting point
-
-You can also install Node-based tools if needed:
+## Development
 
 ```bash
 npm install
+npm run dev       # http://localhost:5173
+npm run build     # production build into dist/
+npm run preview   # serve the production build locally
 ```
 
-## 📁 Folder Structure
+## Deploy to Vercel
+
+1. Push this repo to GitHub.
+2. In Vercel: **Add New Project → Import** the repo. Vercel detects Vite automatically (build `npm run build`, output `dist`). Click **Deploy**.
+3. **Settings → Domains → Add** `robertfent.com` (and `www.robertfent.com`), then create the DNS records Vercel shows at Ionos. HTTPS is automatic.
+
+Every push to `master` deploys automatically afterwards.
+
+`vercel.json` rewrites every path to `index.html` so `/cv` works when opened directly.
+
+## Structure
 
 ```
-.
-├── app/               # Your frontend logic (HTMX views, routes)
-├── core/              # Advanced: override internal modules - feature will soon follow
-├── templates/         # Example files to get started quickly
-├── docker-compose.yml # Production deployment config
-├── docker-compose-dev.yml # Development config (hot reload)
+index.html            entry point
+public/               static assets (photos, icons, CV pdf, favicon)
+src/
+  main.jsx            React bootstrap
+  App.jsx             tiny router ("/" one-pager, "/cv" CV viewer)
+  index.css           all styles
+  reset.css           CSS reset + design tokens
+  components/         Header, Home, About, Projects, Services, Contact, Blog, CV, Footer, Card
 ```
-
-## todo
-
--   overwrite logic -> currently all content from app is copied to app in docker and replaces everything
--   Get the definitions for the core modules, (not working: docker cp stackzero-template-stackzero-1:/stackzero/core/definitions.js core)
-
-## UI todos
-
--   add html into modules maybe and move stuff into app.css
--   unify the margin between elements -> can easily be done after modularization
 
 ## Notes
 
--   use 60/30/10 rule for color scheme
--   icons: https://icons8.com/icons/
+- The contact form opens the visitor's mail client with the message prefilled (`mailto:`), so no backend is required.
+- Icons by [Icons8](https://icons8.com).

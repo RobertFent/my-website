@@ -1,0 +1,401 @@
+:root {
+	--color-primary: #000000;
+	--color-secondary: #ffffff;
+	--color-accent: #c9a65b;
+	--color-primary-grey: #1a1a1a;
+	--color-secondary-grey: #d1d5db;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: var(--font-sans);
+	background-color: var(--color-primary);
+	background-image: url('/robert1.png');
+	background-repeat: no-repeat;
+	background-position: top right;
+	background-size: 1000px auto;
+	color: var(--color-secondary);
+}
+
+#root {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+main {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: var(--size-4);
+	padding: var(--size-4);
+	border-radius: var(--radius-md);
+}
+
+a {
+	color: var(--color-accent);
+	text-decoration: none;
+	border-radius: var(--radius-sm);
+	transition:
+		background 0.2s,
+		color 0.2s;
+	font-weight: 500;
+}
+a:hover,
+a:focus {
+	background: var(--color-accent);
+	color: var(--color-secondary);
+	text-decoration: underline;
+}
+
+.colored-component {
+	background: var(--color-primary);
+	color: var(--color-secondary);
+	border-radius: var(--radius-xl);
+}
+
+/* ---------- header ---------- */
+.site-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: var(--size-4);
+	margin-left: var(--size-8);
+}
+.site-header .name-heading {
+	font-size: var(--size-16);
+}
+.site-header nav a {
+	margin-right: var(--size-6);
+	color: var(--color-secondary);
+	font-size: var(--size-6);
+}
+
+/* ---------- footer ---------- */
+.site-footer {
+	text-align: center;
+	max-width: var(--width-lg);
+	margin: 0 auto;
+	padding: var(--size-2) 0;
+}
+
+/* ---------- root / sections ---------- */
+.root {
+	margin: var(--size-32);
+}
+.root .flex-row {
+	display: flex;
+	flex-direction: row;
+	gap: var(--size-12);
+}
+.root #home {
+	display: flex;
+	flex-direction: column;
+	margin-top: var(--size-32);
+	height: 70vh;
+}
+.root h1 {
+	font-size: var(--size-14);
+}
+.root #website-content > div {
+	margin-top: var(--size-32);
+}
+
+/* ---------- CV ---------- */
+.main-cv {
+	padding: 0;
+}
+.cv-frame {
+	width: 100%;
+	height: 100%;
+	min-height: 80vh;
+	border: none;
+	flex-grow: 1;
+}
+
+/* ---------- about ---------- */
+#about p {
+	font-size: var(--size-5);
+}
+#about img {
+	border-radius: var(--radius-xl);
+	min-width: 250px;
+}
+#about .about-items {
+	position: relative;
+	gap: var(--size-0);
+	justify-content: space-evenly;
+}
+#about .about-item {
+	margin: var(--size-6);
+	flex: 1 1 calc(30%);
+}
+#about .about-item a {
+	cursor: pointer;
+	font-size: var(--size-6);
+}
+#about .about-item ul {
+	position: absolute; /* Hinder ul from growing its parent */
+	max-width: 30%;
+	overflow: hidden;
+	max-height: 0vh;
+}
+#about .about-item li {
+	margin-top: var(--size-6);
+}
+#about .about-item ul.li-visible {
+	max-height: 40vh;
+}
+
+/* ---------- cards (projects & services) ---------- */
+.project-components,
+.service-components {
+	margin-top: var(--size-16);
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+.card {
+	background-color: var(--color-primary-grey);
+	border-radius: var(--radius-md);
+	padding: var(--size-8);
+	align-self: flex-start;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+.root .card h1 {
+	font-size: var(--size-6);
+}
+.card-icon {
+	background-size: auto 100%;
+	background-repeat: no-repeat;
+	height: 50px;
+	width: 50px;
+	display: block;
+}
+.card-content {
+	margin-top: var(--size-2);
+	overflow: hidden;
+	max-height: 0vh;
+	transition: all 1s cubic-bezier(1, 1, 1, 1);
+}
+.card-content.content-visible {
+	max-height: 40vh;
+}
+.card-content .git-link {
+	margin-top: var(--size-2);
+	margin-bottom: var(--size-2);
+}
+.card .expand-button {
+	text-decoration: underline;
+	cursor: pointer;
+}
+.card .expand-button:hover {
+	text-decoration: none;
+}
+
+/* ---------- link entries (contact + blog) ---------- */
+.link-entry {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-top: var(--size-8);
+	gap: var(--size-6);
+}
+.link-entry a {
+	font-size: var(--size-5);
+}
+.link-icon {
+	background-size: auto 100%;
+	background-repeat: no-repeat;
+	height: 50px;
+	width: 50px;
+	display: block;
+	flex-shrink: 0;
+}
+
+/* ---------- contact ---------- */
+#contact .contact-components {
+	margin-top: var(--size-12);
+	justify-content: space-between;
+}
+#contact .contact-left {
+	display: flex;
+	flex-direction: column;
+}
+#contact .contact-right {
+	width: 40vw;
+}
+#contact h2 {
+	margin-bottom: var(--size-4);
+	text-align: center;
+}
+#contact form {
+	background: var(--color-secondary);
+	border: 1px solid var(--color-accent);
+	border-radius: var(--radius-xl);
+	padding: var(--size-6);
+}
+#contact .form-group {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: var(--size-4);
+}
+#contact label {
+	margin-bottom: var(--size-1);
+	font-weight: bold;
+	color: var(--color-primary);
+}
+#contact button {
+	margin-top: var(--size-2);
+	padding: var(--size-2) var(--size-4);
+	border: none;
+	border-radius: var(--radius-sm);
+	background: var(--color-primary);
+	color: white;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background 0.2s ease;
+}
+#contact input[type='text'] {
+	padding: var(--size-2);
+	border: 1px solid var(--color-secondary-grey);
+	border-radius: var(--radius-sm);
+	font-size: 1rem;
+	color: var(--color-primary);
+	background: var(--color-secondary);
+}
+#contact input[type='text']:focus {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+}
+#contact .submit-message {
+	margin-top: var(--size-4);
+	text-align: center;
+	font-size: var(--size-5);
+	font-weight: bold;
+	opacity: 0;
+}
+#contact .submit-message.show-message {
+	animation: showMessageAnimation 2s alternate 2;
+	animation-fill-mode: forwards;
+}
+@keyframes showMessageAnimation {
+	to {
+		opacity: 1;
+	}
+}
+
+/* ---------- hover only on devices that have one ---------- */
+@media (hover: hover) and (pointer: fine) {
+	.card:not(.clicked):hover {
+		background-color: var(--color-accent);
+	}
+	#contact button:hover {
+		background: var(--color-accent);
+	}
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 1400px) {
+	.root {
+		margin: var(--size-8);
+	}
+	.root #about {
+		margin-top: var(--size-32);
+	}
+}
+@media (max-width: 1200px) {
+	#about p {
+		font-size: var(--size-4);
+	}
+}
+@media (max-width: 900px) {
+	.root {
+		margin: var(--size-4);
+	}
+	.root h1 {
+		font-size: var(--size-12);
+	}
+	.root #home {
+		justify-content: flex-start;
+		margin-top: var(--size-32);
+		height: 40vh;
+	}
+	.root #website-content > div {
+		margin-top: var(--size-16);
+		flex-direction: column;
+	}
+	#about img {
+		max-width: 350px;
+	}
+	#about .about-items {
+		flex-direction: column;
+	}
+	#about .about-item ul {
+		position: relative;
+		max-width: 100%;
+	}
+	.project-components,
+	.service-components {
+		flex-direction: column;
+	}
+	.card {
+		flex: 1 1 100% !important;
+		max-width: 100% !important;
+	}
+	.root .card h1 {
+		font-size: var(--size-7);
+	}
+	#contact .contact-components {
+		margin-top: var(--size-6);
+		flex-direction: column;
+	}
+	#contact .link-entry {
+		margin-top: var(--size-6);
+	}
+	#contact .contact-right {
+		width: 100%;
+	}
+}
+@media (max-width: 600px) {
+	body {
+		background-position: top left;
+		background-size: 800px auto;
+	}
+	.root {
+		margin: var(--size-2);
+	}
+	.site-header {
+		flex-direction: column;
+		align-items: flex-start;
+		margin-left: 0;
+	}
+	.site-header .name-heading {
+		font-size: var(--size-10);
+	}
+	.site-header nav {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		margin-top: var(--size-2);
+	}
+	.site-header nav a {
+		font-size: var(--size-6);
+		margin-left: 0;
+		margin-right: var(--size-3);
+	}
+	#about img {
+		max-width: 100%;
+	}
+	#about .about-item {
+		margin-left: 0;
+	}
+}
+@media (max-width: 400px) {
+	body {
+		background-size: 600px auto;
+	}
+}
