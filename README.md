@@ -1,6 +1,6 @@
-# Personal Portfolio Website
+# robertfent.com
 
-Single-page React app built with [Vite](https://vite.dev), deployed to [Vercel](https://vercel.com).
+Personal portfolio – a single-page React app built with [Vite](https://vite.dev), deployed to [Vercel](https://vercel.com) for free. No server, no Docker, no database.
 
 ## Development
 
@@ -17,7 +17,7 @@ npm run preview   # serve the production build locally
 2. In Vercel: **Add New Project → Import** the repo. Vercel detects Vite automatically (build `npm run build`, output `dist`). Click **Deploy**.
 3. **Settings → Domains → Add** `robertfent.com` (and `www.robertfent.com`), then create the DNS records Vercel shows at Ionos. HTTPS is automatic.
 
-Every push to `master` deploys automatically afterwards.
+Every push to `main` deploys automatically afterwards.
 
 `vercel.json` rewrites every path to `index.html` so `/cv` works when opened directly.
 
@@ -33,6 +33,10 @@ src/
   reset.css           CSS reset + design tokens
   components/         Header, Home, About, Projects, Services, Contact, Blog, CV, Footer, Card
 ```
+
+## Analytics
+
+Vercel Web Analytics and Speed Insights are wired in via `<Analytics />` and `<SpeedInsights />` in `src/main.jsx`. Enable both in the Vercel dashboard (**Project → Analytics → Enable** and **Project → Speed Insights → Enable**), then redeploy. Both are cookieless and only collect anonymous, aggregated data.
 
 ## Notes
 
