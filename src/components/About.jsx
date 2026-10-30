@@ -25,7 +25,7 @@ export default function About() {
 				<figure className="about-photo reveal">
 					<img
 						src="/about.webp"
-						alt="Robert and his fiancée wearing helmets"
+						alt="Robert and his wife Sara wearing helmets"
 						loading="lazy"
 						width="600"
 						height="800"

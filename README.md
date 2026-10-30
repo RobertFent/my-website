@@ -17,7 +17,7 @@ npm run preview   # serve the production build locally
 2. In Vercel: **Add New Project → Import** the repo. Vercel detects Vite automatically (build `npm run build`, output `dist`). Click **Deploy**.
 3. **Settings → Domains → Add** `robertfent.com` (and `www.robertfent.com`), then create the DNS records Vercel shows at Ionos. HTTPS is automatic.
 
-Every push to `main` deploys automatically afterwards.
+Every push to `master` deploys automatically afterwards.
 
 `vercel.json` rewrites every path to `index.html` so `/cv` works when opened directly.
 

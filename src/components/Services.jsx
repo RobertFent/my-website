@@ -8,7 +8,7 @@ export default function Services() {
 			id="services"
 			index={3}
 			title="Services"
-			lead="Two things I can do for you as a freelancer."
+			lead="Some things I can do for you as a freelancer."
 		>
 			<div className="service-grid">
 				{services.map((service, i) => (

@@ -14,7 +14,7 @@ export default function Projects() {
 				{projects.map((project, i) => (
 					<article
 						key={project.title}
-						className={`card project reveal ${i === 0 ? 'featured' : ''}`}
+						className={`card project reveal ${project.featured ? 'featured' : ''}`}
 						style={{ '--delay': `${(i % 3) * 70}ms` }}
 					>
 						<div className="card-top">

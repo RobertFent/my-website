@@ -15,9 +15,9 @@ export const hero = {
 	eyebrow: 'Fullstack Software Developer & DevOps Engineer',
 	name: 'Robert Fent',
 	intro:
-		'I build maintainable software and the infrastructure it runs on with a focus and automation and minimal cost.',
+		'I build maintainable software and the infrastructure it runs on — automated, secure and at minimal cost. From a single landing page to a complete internal software suite with AI built in.',
 	stats: [
-		{ value: '5+', label: 'years in software developemnt' },
+		{ value: '5+', label: 'years in software development' },
 		{ value: '97%', label: 'cloud cost reduction' },
 		{ value: '0€', label: 'monthly hosting for this site' }
 	]
@@ -39,8 +39,12 @@ export const about = {
 		'Docker',
 		'AWS',
 		'Hetzner',
+		'Ansible',
+		'NGINX',
 		'GitLab CI / GitHub Actions',
 		'Linux & Shell',
+		'SSO / OIDC',
+		'LLM Integration',
 		'Clean Code',
 		'Software Architecture'
 	],
@@ -77,6 +81,21 @@ export const about = {
 
 export const projects = [
 	{
+		title: 'Internal Software Suite',
+		icon: 'suite_white.svg',
+		featured: true,
+		tags: [
+			'Authentik SSO',
+			'Traefik',
+			'PostgreSQL',
+			'LiveKit',
+			'Renovate',
+			'ISMS'
+		],
+		description:
+			'Built our company’s entire internal software suite from the ground up — self-hosted replacements for every SaaS tool we paid for, behind one Authentik login with enforced MFA. A CRM, a Notion-like wiki, team chat, a 2D virtual office with audio and video, an ISO 27001 ISMS, an AI-assisted mail and calendar client for Microsoft 365, a draw.io-based diagram tool and an update dashboard that reviews Renovate merge requests and deploys master. One Hetzner server, one Docker Compose stack per failure domain, nightly encrypted backups with monthly restore tests, and a preflight that refuses to start anything unsafe.'
+	},
+	{
 		title: 'StackZero',
 		icon: 'html_white.png',
 		tags: ['Node.js', 'Fastify', 'htmx', 'SQLite', 'Docker'],
@@ -94,13 +113,22 @@ export const projects = [
 	{
 		title: 'Home Server',
 		icon: 'server_white.png',
-		tags: ['Ubuntu Server', 'Ansible', 'Docker', 'Plex'],
+		featured: true,
+		tags: [
+			'Ubuntu Server',
+			'Docker Compose',
+			'Traefik',
+			'Home Assistant',
+			'Grafana',
+			'Tailscale'
+		],
 		description:
-			'An HP ProDesk running Ubuntu Server, provisioned fully with Ansible and running a containerized media stack (arr suite, Plex) built on LinuxServer.io images. Zero-config, reproducible and entirely self-hosted.'
+			'An Ubuntu home server running five independent Docker Compose stacks: a media stack (Jellyfin, Navidrome) with all download traffic forced through a VPN kill switch, Home Assistant monitoring and optimising my PV system and battery, InfluxDB and Grafana for energy analytics, Uptime Kuma, and nightly restic backups with automated restore checks. Nothing is port-forwarded — Traefik is the only ingress, with Let’s Encrypt certificates via DNS-01 and remote access over Tailscale. IoT devices live on their own OpenWrt subnet.'
 	},
 	{
 		title: 'Stocks Analyzer',
 		icon: 'python_white.png',
+		featured: true,
 		tags: ['Python', 'CLI'],
 		description:
 			'A command-line tool implementing the PowerX strategy by Markus Heitkoetter. It generates buy and sell signals from market data to support trading decisions — fully local.',
@@ -136,6 +164,13 @@ export const services = [
 		description:
 			'I analyze your cloud setup (preferably AWS) and its monthly bill, propose concrete savings, and — where it makes sense — migrate your services to Hetzner to save up to 97% of your monthly costs.',
 		cta: { href: `mailto:${EMAIL}`, label: 'Get in touch' }
+	},
+	{
+		title: 'AI Setup & Infrastructure Integration',
+		icon: 'ai_white.svg',
+		description:
+			'I set up AI for your business and wire it into the tools you already use — from choosing the right model (hosted or self-hosted) to LLM-powered assistants, automations and integrations in your existing infrastructure, with data privacy and running costs in mind.',
+		cta: { href: `mailto:${EMAIL}`, label: 'Discuss your use case' }
 	}
 ];
 
