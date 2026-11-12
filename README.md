@@ -7,7 +7,7 @@ Personal portfolio – a single-page React app built with [Vite](https://vite.de
 ```bash
 npm install
 npm run dev       # http://localhost:5173
-npm run build     # production build into dist/
+npm run build     # production build into dist/ (incl. prerendered HTML + sitemap)
 npm run preview   # serve the production build locally
 ```
 
@@ -47,3 +47,7 @@ Vercel Web Analytics and Speed Insights are wired in via `<Analytics />` and `<S
 - The contact form opens the visitor's mail client with the message prefilled (`mailto:`), so no backend is required.
 - Inter is self-hosted via `@fontsource-variable/inter`, so no requests go to Google Fonts.
 - Icons by [Icons8](https://icons8.com).
+
+## SEO
+
+`npm run build` prerenders every page to static HTML (`scripts/prerender.js`) so search engines and link previews see the full content, then hydrates it in the browser. Page titles, descriptions and the JSON-LD structured data live in `src/seo.js`; adding a page there also adds it to the generated `sitemap.xml`. The canonical domain is `https://www.robertfent.com` (the bare domain redirects there).

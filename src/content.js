@@ -15,7 +15,7 @@ export const hero = {
 	eyebrow: 'Fullstack Software Developer & DevOps Engineer',
 	name: 'Robert Fent',
 	intro:
-		'I build maintainable software and the infrastructure it runs on — automated, secure and at minimal cost. From a single landing page to a complete internal software suite with AI built in.',
+		'I build maintainable software and the secure, automated and cost-efficient infrastructure it runs on. My projects range from a single landing page to a complete internal software suite with AI built in.',
 	stats: [
 		{ value: '5+', label: 'years in software development' },
 		{ value: '97%', label: 'cloud cost reduction' },

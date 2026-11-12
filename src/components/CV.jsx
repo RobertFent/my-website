@@ -7,11 +7,7 @@ export default function CV() {
 					Download PDF
 				</a>
 			</div>
-			<iframe
-				className="cv-frame"
-				src="/cv.pdf"
-				title="CV of Robert Fent"
-			/>
+			<iframe className="cv-frame" src="/cv.pdf" title="CV of Robert Fent" />
 		</section>
 	);
 }
