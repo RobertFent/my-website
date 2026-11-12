@@ -46,6 +46,8 @@ export default function Hero({ navigate }) {
 				<div className="portrait-frame">
 					<img
 						src="/portrait.webp"
+						srcSet="/portrait-600.webp 600w, /portrait.webp 772w"
+						sizes="(max-width: 860px) 300px, 420px"
 						alt="Portrait of Robert Fent"
 						width="600"
 						height="800"

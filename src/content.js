@@ -11,6 +11,29 @@ export const nav = [
 	{ href: '/#contact', label: 'Contact' }
 ];
 
+/** Section label (small eyebrow) and descriptive heading (h2) for SEO. */
+export const sections = {
+	about: {
+		label: 'About',
+		title: 'Software developer and DevOps engineer based in Germany'
+	},
+	projects: {
+		label: 'Projects',
+		title: 'Software and infrastructure projects',
+		lead: 'A selection of things I have built at work and on my own time.'
+	},
+	services: {
+		label: 'Services',
+		title: 'Freelance development, DevOps and AI services',
+		lead: 'Some things I can do for you as a freelancer.'
+	},
+	contact: {
+		label: 'Contact',
+		title: 'Let’s work together',
+		lead: 'Have a project in mind or just want to say hello? My inbox is open.'
+	}
+};
+
 export const hero = {
 	eyebrow: 'Fullstack Software Developer & DevOps Engineer',
 	name: 'Robert Fent',

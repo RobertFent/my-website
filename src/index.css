@@ -10,7 +10,7 @@
 	--border-strong: rgba(255, 255, 255, 0.16);
 	--text: #f4f4f5;
 	--text-muted: #a1a1aa;
-	--text-faint: #71717a;
+	--text-faint: #8b8b94;
 	--accent: #c9a65b;
 	--accent-strong: #e0be6f;
 	--accent-soft: rgba(201, 166, 91, 0.14);
@@ -207,7 +207,6 @@ a:hover {
 	border: 1px solid var(--border);
 	border-radius: var(--radius-lg);
 	padding: 1.75rem;
-	backdrop-filter: blur(6px);
 	transition:
 		transform 0.35s var(--ease),
 		border-color 0.35s var(--ease),
@@ -597,6 +596,7 @@ a:hover {
 	padding-top: clamp(1.5rem, 4vh, 2.5rem);
 	border-top: 1px solid var(--border);
 }
+.timeline h2,
 .timeline h3 {
 	margin: 0 0 1.5rem;
 }
@@ -839,6 +839,12 @@ a:hover {
 	justify-content: space-between;
 	gap: 1rem;
 }
+.cv-bar {
+	flex-wrap: wrap;
+}
+.cv-bar .eyebrow {
+	margin: 0 0 0.5rem;
+}
 .cv-bar h1 {
 	font-size: clamp(1.6rem, 3vw, 2.25rem);
 	margin: 0;
@@ -852,6 +858,28 @@ a:hover {
 	background: var(--bg-elevated);
 }
 
+.cv-summary {
+	max-width: 46rem;
+	color: var(--text-muted);
+	margin: 0;
+}
+.cv .timelines {
+	margin-top: 0.5rem;
+}
+.cv-skills {
+	margin-top: 1rem;
+}
+.cv .timeline h2,
+.cv-skills h2,
+.cv-pdf-title {
+	font-size: 1.25rem;
+	letter-spacing: -0.01em;
+	margin: 0 0 1rem;
+}
+.cv-pdf-title {
+	margin: 1rem 0 0;
+}
+
 /* 404 page */
 .not-found {
 	align-items: flex-start;
@@ -863,6 +891,27 @@ a:hover {
 }
 .not-found p {
 	color: var(--text-muted);
+}
+
+/* skip link: hidden until focused with the keyboard */
+.skip-link {
+	position: fixed;
+	top: 0.75rem;
+	left: 0.75rem;
+	z-index: 100;
+	padding: 0.6rem 1rem;
+	border-radius: var(--radius-sm);
+	background: var(--accent);
+	color: #0a0a0b;
+	font-weight: 600;
+	transform: translateY(-200%);
+	transition: transform 0.2s var(--ease);
+}
+.skip-link:focus {
+	transform: none;
+}
+main:focus {
+	outline: none;
 }
 
 /* ==========================================================================
@@ -886,6 +935,8 @@ a:hover {
 }
 .footer-credits a {
 	color: var(--text-muted);
+	text-decoration: underline;
+	text-underline-offset: 2px;
 }
 .footer-credits a:hover {
 	color: var(--accent);

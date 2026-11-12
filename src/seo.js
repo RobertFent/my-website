@@ -3,7 +3,7 @@
  * the static <head> of every page, and at runtime by applyMeta() so the tab
  * title / canonical stay correct after client-side navigation.
  */
-import { about, links, services } from './content.js';
+import { EMAIL, about, hero, links, services } from './content.js';
 
 export const SITE_URL = 'https://www.robertfent.com';
 export const SITE_NAME = 'Robert Fent';
@@ -31,49 +31,75 @@ export const pageFor = (path) => pages[path] ?? notFound;
 export const urlFor = (path) =>
 	path === '/' ? `${SITE_URL}/` : SITE_URL + path;
 
-/** schema.org structured data for the home page (Person + WebSite). */
-export const structuredData = () => {
+/** schema.org structured data (JSON-LD) for a page. */
+export const structuredData = (path) => {
 	const sameAs = links
 		.map((l) => l.href)
 		.filter((href) => href.startsWith('http'));
 	const [current] = about.experience;
-	return {
-		'@context': 'https://schema.org',
-		'@graph': [
-			{
-				'@type': 'Person',
-				'@id': `${SITE_URL}/#person`,
-				name: SITE_NAME,
-				url: `${SITE_URL}/`,
-				image: `${SITE_URL}/portrait.webp`,
-				jobTitle: current.role,
-				worksFor: { '@type': 'Organization', name: current.org },
-				address: { '@type': 'PostalAddress', addressCountry: 'DE' },
-				alumniOf: about.education.map((e) => ({
-					'@type': 'CollegeOrUniversity',
-					name: e.org
-				})),
-				knowsAbout: about.skills,
-				sameAs,
-				makesOffer: services.map((s) => ({
-					'@type': 'Offer',
-					itemOffered: {
-						'@type': 'Service',
-						name: s.title,
-						description: s.description
-					}
-				}))
-			},
-			{
-				'@type': 'WebSite',
-				'@id': `${SITE_URL}/#website`,
-				url: `${SITE_URL}/`,
-				name: SITE_NAME,
-				inLanguage: 'en',
-				publisher: { '@id': `${SITE_URL}/#person` }
+	const person = {
+		'@type': 'Person',
+		'@id': `${SITE_URL}/#person`,
+		name: SITE_NAME,
+		url: `${SITE_URL}/`,
+		image: `${SITE_URL}/portrait.webp`,
+		description: hero.intro,
+		jobTitle: current.role,
+		email: `mailto:${EMAIL}`,
+		worksFor: { '@type': 'Organization', name: current.org },
+		address: { '@type': 'PostalAddress', addressCountry: 'DE' },
+		alumniOf: about.education.map((e) => ({
+			'@type': 'CollegeOrUniversity',
+			name: e.org
+		})),
+		knowsAbout: about.skills,
+		sameAs,
+		makesOffer: services.map((s) => ({
+			'@type': 'Offer',
+			itemOffered: {
+				'@type': 'Service',
+				name: s.title,
+				description: s.description,
+				provider: { '@id': `${SITE_URL}/#person` }
 			}
-		]
+		}))
 	};
+	const website = {
+		'@type': 'WebSite',
+		'@id': `${SITE_URL}/#website`,
+		url: `${SITE_URL}/`,
+		name: SITE_NAME,
+		inLanguage: 'en',
+		publisher: { '@id': `${SITE_URL}/#person` }
+	};
+	const { title, description } = pageFor(path);
+	const webpage = {
+		'@type': path === '/' ? 'ProfilePage' : 'WebPage',
+		'@id': `${urlFor(path)}#webpage`,
+		url: urlFor(path),
+		name: title,
+		description,
+		inLanguage: 'en',
+		isPartOf: { '@id': `${SITE_URL}/#website` },
+		[path === '/' ? 'mainEntity' : 'about']: { '@id': `${SITE_URL}/#person` },
+		primaryImageOfPage: { '@type': 'ImageObject', url: OG_IMAGE }
+	};
+	const graph = [webpage, person, website];
+	if (path !== '/') {
+		graph.push({
+			'@type': 'BreadcrumbList',
+			itemListElement: [
+				{
+					'@type': 'ListItem',
+					position: 1,
+					name: 'Home',
+					item: `${SITE_URL}/`
+				},
+				{ '@type': 'ListItem', position: 2, name: title, item: urlFor(path) }
+			]
+		});
+	}
+	return { '@context': 'https://schema.org', '@graph': graph };
 };
 
 /** Client-side: update head tags after navigating between pages. */

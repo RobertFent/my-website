@@ -73,12 +73,11 @@ const buildPage = (path, { noindex = false } = {}) => {
 
 	html = html.replace('</head>', `\t${fontPreload}\n\t</head>`);
 
-	const jsonLd =
-		path === '/'
-			? `<script type="application/ld+json">${JSON.stringify(
-					structuredData()
-				).replace(/</g, '\\u003c')}</script>`
-			: '';
+	const jsonLd = noindex
+		? ''
+		: `<script type="application/ld+json">${JSON.stringify(
+				structuredData(path)
+			).replace(/</g, '\\u003c')}</script>`;
 	html = html.replace('<!--structured-data-->', jsonLd);
 
 	// remove the dev-only comment block

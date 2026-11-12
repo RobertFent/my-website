@@ -66,9 +66,12 @@ export default function App({ initialPath = '/' }) {
 
 	return (
 		<>
+			<a className="skip-link" href="#main">
+				Skip to content
+			</a>
 			<div className="bg-glow" aria-hidden="true" />
 			<Header navigate={navigate} path={path} />
-			<main>
+			<main id="main" tabIndex={-1}>
 				{isCV ? (
 					<CV />
 				) : !isHome ? (

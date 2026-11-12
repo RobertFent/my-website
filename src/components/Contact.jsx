@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Section from './Section.jsx';
 import Icon from './Icon.jsx';
-import { EMAIL, links } from '../content.js';
+import { EMAIL, links, sections } from '../content.js';
 
 export default function Contact() {
 	const [author, setAuthor] = useState('');
@@ -18,12 +18,7 @@ export default function Contact() {
 	};
 
 	return (
-		<Section
-			id="contact"
-			index={4}
-			title="Contact"
-			lead="Have a project in mind or just want to say hello? My inbox is open."
-		>
+		<Section id="contact" index={4} {...sections.contact}>
 			<div className="contact-grid">
 				<ul className="link-list reveal">
 					{links.map(({ icon, href, label }) => (

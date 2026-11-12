@@ -1,9 +1,11 @@
 /**
- * Shared section shell: numbered eyebrow, heading, optional lead paragraph.
+ * Shared section shell: numbered eyebrow (short label), descriptive heading,
+ * optional lead paragraph.
  */
 export default function Section({
 	id,
 	index,
+	label,
 	title,
 	lead,
 	children,
@@ -16,7 +18,7 @@ export default function Section({
 					<span className="section-index">
 						{String(index).padStart(2, '0')}
 					</span>
-					{title}
+					{label}
 				</p>
 				<h2>{title}</h2>
 				{lead && <p className="section-lead">{lead}</p>}

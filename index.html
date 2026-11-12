@@ -60,7 +60,14 @@
 		<meta name="theme-color" content="#0a0a0b" />
 		<link rel="icon" type="image/png" sizes="256x256" href="/favicon.png" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-		<link rel="preload" as="image" href="/portrait.webp" fetchpriority="high" />
+		<link
+			rel="preload"
+			as="image"
+			href="/portrait.webp"
+			imagesrcset="/portrait-600.webp 600w, /portrait.webp 772w"
+			imagesizes="(max-width: 860px) 300px, 420px"
+			fetchpriority="high"
+		/>
 		<!--structured-data-->
 	</head>
 	<body>

@@ -1,15 +1,10 @@
 import Section from './Section.jsx';
 import Icon from './Icon.jsx';
-import { services } from '../content.js';
+import { sections, services } from '../content.js';
 
 export default function Services() {
 	return (
-		<Section
-			id="services"
-			index={3}
-			title="Services"
-			lead="Some things I can do for you as a freelancer."
-		>
+		<Section id="services" index={3} {...sections.services}>
 			<div className="service-grid">
 				{services.map((service, i) => (
 					<article

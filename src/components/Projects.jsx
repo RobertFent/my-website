@@ -1,15 +1,10 @@
 import Section from './Section.jsx';
 import Icon from './Icon.jsx';
-import { projects } from '../content.js';
+import { projects, sections } from '../content.js';
 
 export default function Projects() {
 	return (
-		<Section
-			id="projects"
-			index={2}
-			title="Projects"
-			lead="A selection of things I have built at work and on my own time."
-		>
+		<Section id="projects" index={2} {...sections.projects}>
 			<div className="project-grid">
 				{projects.map((project, i) => (
 					<article
@@ -27,6 +22,7 @@ export default function Projects() {
 									href={project.link.href}
 									target="_blank"
 									rel="noreferrer"
+									aria-label={`${project.title} on ${project.link.label}`}
 								>
 									{project.link.label} <span aria-hidden="true">↗</span>
 								</a>

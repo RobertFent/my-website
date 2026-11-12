@@ -1,10 +1,11 @@
 import Section from './Section.jsx';
-import { about } from '../content.js';
+import { about, sections } from '../content.js';
 
-function Timeline({ title, items }) {
+export function Timeline({ title, items, headingLevel = 3 }) {
+	const Heading = `h${headingLevel}`;
 	return (
 		<div className="timeline reveal">
-			<h3>{title}</h3>
+			<Heading>{title}</Heading>
 			<ol>
 				{items.map(({ period, role, org }) => (
 					<li key={period}>
@@ -20,12 +21,14 @@ function Timeline({ title, items }) {
 
 export default function About() {
 	return (
-		<Section id="about" index={1} title="About">
+		<Section id="about" index={1} {...sections.about}>
 			<div className="about-grid">
 				<figure className="about-photo reveal">
 					<img
 						src="/about.webp"
-						alt="Robert and his wife Sara wearing helmets"
+						srcSet="/about-480.webp 480w, /about.webp 675w"
+						sizes="(max-width: 860px) 360px, 440px"
+						alt="Robert Fent and his wife Sara wearing helmets"
 						loading="lazy"
 						width="600"
 						height="800"
