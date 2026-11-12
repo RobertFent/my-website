@@ -6,6 +6,7 @@ import '@fontsource-variable/inter';
 import './reset.css';
 import './index.css';
 import App from './App.jsx';
+import { resolve } from './routes.js';
 
 const root = document.getElementById('root');
 const app = (
@@ -16,7 +17,13 @@ const app = (
 	</StrictMode>
 );
 
-// production pages are prerendered (scripts/prerender.js) → hydrate them;
-// the dev server serves an empty #root → render from scratch
-if (root.firstElementChild) hydrateRoot(root, app);
+// Production pages are prerendered (scripts/prerender.js) → hydrate them.
+// Render from scratch when there is no markup (dev server) or the markup is
+// for a different route (e.g. the shared English 404.html under /de/…).
+const prerendered = root.dataset.path;
+const matches =
+	prerendered &&
+	JSON.stringify(resolve(prerendered)) ===
+		JSON.stringify(resolve(window.location.pathname));
+if (root.firstElementChild && matches) hydrateRoot(root, app);
 else createRoot(root).render(app);

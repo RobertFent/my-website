@@ -1,5 +1,5 @@
 import Section from './Section.jsx';
-import { about, sections } from '../content.js';
+import { useContent } from '../i18n.js';
 
 export function Timeline({ title, items, headingLevel = 3 }) {
 	const Heading = `h${headingLevel}`;
@@ -20,6 +20,7 @@ export function Timeline({ title, items, headingLevel = 3 }) {
 }
 
 export default function About() {
+	const { about, sections, skills, ui } = useContent();
 	return (
 		<Section id="about" index={1} {...sections.about}>
 			<div className="about-grid">
@@ -28,7 +29,7 @@ export default function About() {
 						src="/about.webp"
 						srcSet="/about-480.webp 480w, /about.webp 675w"
 						sizes="(max-width: 860px) 360px, 440px"
-						alt="Robert Fent and his wife Sara wearing helmets"
+						alt={about.photoAlt}
 						loading="lazy"
 						width="600"
 						height="800"
@@ -38,17 +39,17 @@ export default function About() {
 					{about.paragraphs.map((p) => (
 						<p key={p}>{p}</p>
 					))}
-					<h3>Skills</h3>
+					<h3>{ui.skills}</h3>
 					<ul className="chips">
-						{about.skills.map((skill) => (
+						{skills.map((skill) => (
 							<li key={skill}>{skill}</li>
 						))}
 					</ul>
 				</div>
 			</div>
 			<div className="timelines">
-				<Timeline title="Experience" items={about.experience} />
-				<Timeline title="Education" items={about.education} />
+				<Timeline title={ui.experience} items={about.experience} />
+				<Timeline title={ui.education} items={about.education} />
 			</div>
 		</Section>
 	);

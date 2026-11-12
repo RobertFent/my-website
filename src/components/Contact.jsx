@@ -1,16 +1,18 @@
 import { useState } from 'react';
 import Section from './Section.jsx';
 import Icon from './Icon.jsx';
-import { EMAIL, links, sections } from '../content.js';
+import { EMAIL, links } from '../content/index.js';
+import { useContent } from '../i18n.js';
 
 export default function Contact() {
+	const { contact, sections } = useContent();
 	const [author, setAuthor] = useState('');
 	const [content, setContent] = useState('');
 	const [sent, setSent] = useState(false);
 
 	const onSubmit = (event) => {
 		event.preventDefault();
-		const subject = encodeURIComponent(`Message from ${author}`);
+		const subject = encodeURIComponent(contact.subject(author));
 		const body = encodeURIComponent(`${content}\n\n— ${author}`);
 		window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
 		setSent(true);
@@ -45,35 +47,35 @@ export default function Contact() {
 					style={{ '--delay': '100ms' }}
 					onSubmit={onSubmit}
 				>
-					<h3>Leave me a message</h3>
+					<h3>{contact.formTitle}</h3>
 					<label>
-						Your name
+						{contact.name}
 						<input
 							type="text"
 							name="author"
 							required
 							autoComplete="name"
-							placeholder="Jane Doe"
+							placeholder={contact.namePlaceholder}
 							value={author}
 							onChange={(e) => setAuthor(e.target.value)}
 						/>
 					</label>
 					<label>
-						Your message
+						{contact.message}
 						<textarea
 							name="content"
 							required
 							rows={4}
-							placeholder="Hi Robert, …"
+							placeholder={contact.messagePlaceholder}
 							value={content}
 							onChange={(e) => setContent(e.target.value)}
 						/>
 					</label>
 					<button type="submit" className="btn btn-primary">
-						Send via e-mail
+						{contact.submit}
 					</button>
 					<p className={`form-note ${sent ? 'show' : ''}`} aria-live="polite">
-						Opening your mail app — thank you!
+						{contact.sent}
 					</p>
 				</form>
 			</div>

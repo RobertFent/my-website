@@ -1,8 +1,9 @@
 import Section from './Section.jsx';
 import Icon from './Icon.jsx';
-import { projects, sections } from '../content.js';
+import { useContent } from '../i18n.js';
 
 export default function Projects() {
+	const { projects, sections, ui } = useContent();
 	return (
 		<Section id="projects" index={2} {...sections.projects}>
 			<div className="project-grid">
@@ -22,7 +23,7 @@ export default function Projects() {
 									href={project.link.href}
 									target="_blank"
 									rel="noreferrer"
-									aria-label={`${project.title} on ${project.link.label}`}
+									aria-label={ui.projectOn(project.title, project.link.label)}
 								>
 									{project.link.label} <span aria-hidden="true">↗</span>
 								</a>

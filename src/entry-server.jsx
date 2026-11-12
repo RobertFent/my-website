@@ -6,8 +6,15 @@ import { StrictMode } from 'react';
 import { renderToString } from 'react-dom/server';
 import App from './App.jsx';
 
-export { pages, pageFor, urlFor, structuredData, SITE_URL } from './seo.js';
-export * as content from './content.js';
+export { SITE_URL, hreflangTags, structuredData, urlFor } from './seo.js';
+export {
+	allRoutes,
+	alternatesFor,
+	isIndexable,
+	metaFor,
+	pathFor
+} from './routes.js';
+export { EMAIL, content, links, missingLegalFields } from './content/index.js';
 
 export const render = (path) =>
 	renderToString(

@@ -1,32 +1,38 @@
 import Section from './Section.jsx';
 import Icon from './Icon.jsx';
-import { sections, services } from '../content.js';
+import Link from './Link.jsx';
+import { useContent } from '../i18n.js';
+import { pathFor } from '../routes.js';
 
 export default function Services() {
+	const { lang, sections, services, ui } = useContent();
 	return (
 		<Section id="services" index={3} {...sections.services}>
 			<div className="service-grid">
 				{services.map((service, i) => (
 					<article
-						key={service.title}
+						key={service.id}
 						className="card service reveal"
 						style={{ '--delay': `${i * 90}ms` }}
 					>
 						<span className="icon-badge">
 							<Icon name={service.icon} size={26} />
 						</span>
-						<h3>{service.title}</h3>
+						<h3>
+							<Link
+								to={pathFor({ locale: lang, page: 'service', id: service.id })}
+							>
+								{service.title}
+							</Link>
+						</h3>
 						<p>{service.description}</p>
-						<a
+						<Link
 							className="btn btn-primary"
-							href={service.cta.href}
-							target={
-								service.cta.href.startsWith('http') ? '_blank' : undefined
-							}
-							rel="noreferrer"
+							to={pathFor({ locale: lang, page: 'service', id: service.id })}
+							aria-label={`${ui.learnMore}: ${service.title}`}
 						>
-							{service.cta.label}
-						</a>
+							{ui.learnMore}
+						</Link>
 					</article>
 				))}
 			</div>
