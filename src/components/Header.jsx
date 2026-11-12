@@ -21,13 +21,20 @@ export default function Header({ navigate, path }) {
 	return (
 		<header className={`site-header ${scrolled ? 'scrolled' : ''}`}>
 			<div className="container header-inner">
-				<a className="brand" href="/" onClick={(e) => go(e, '/')}>
+				<a
+					className="brand"
+					href="/"
+					aria-label="Robert Fent – home"
+					onClick={(e) => go(e, '/')}
+				>
 					<span className="brand-mark">R</span>
 					<span className="brand-name">Robert Fent</span>
 				</a>
 
 				<button
+					type="button"
 					className="nav-toggle"
+					aria-controls="site-nav"
 					aria-label="Toggle navigation"
 					aria-expanded={open}
 					onClick={() => setOpen((o) => !o)}
@@ -36,7 +43,7 @@ export default function Header({ navigate, path }) {
 					<span />
 				</button>
 
-				<nav className={open ? 'open' : ''}>
+				<nav id="site-nav" aria-label="Main" className={open ? 'open' : ''}>
 					{nav.map(({ href, label }) => (
 						<a key={href} href={href} onClick={(e) => go(e, href)}>
 							{label}

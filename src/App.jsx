@@ -7,21 +7,30 @@ import Projects from './components/Projects.jsx';
 import Services from './components/Services.jsx';
 import Contact from './components/Contact.jsx';
 import CV from './components/CV.jsx';
+import NotFound from './components/NotFound.jsx';
 import useReveal from './useReveal.js';
+import { applyMeta } from './seo.js';
 
 /**
- * Tiny router: "/" renders the one-page portfolio, "/cv" the CV viewer.
+ * Tiny router: "/" renders the one-page portfolio, "/cv" the CV viewer,
+ * anything else a 404 page.
  */
 const readLocation = () => ({
-	path: window.location.pathname,
+	// normalise "/cv/" → "/cv" so trailing-slash URLs don't fall through
+	path: window.location.pathname.replace(/(.)\/+$/, '$1'),
 	hash: window.location.hash.slice(1),
 	// changes on every navigation, even when path + hash are identical,
 	// so clicking the same nav link twice still scrolls
 	tick: Date.now()
 });
 
-const useLocation = () => {
-	const [location, setLocation] = useState(readLocation);
+const useLocation = (initialPath) => {
+	// during prerendering (no window) the path is passed in explicitly
+	const [location, setLocation] = useState(() =>
+		typeof window === 'undefined'
+			? { path: initialPath, hash: '', tick: 0 }
+			: readLocation()
+	);
 	useEffect(() => {
 		const onPop = () => setLocation(readLocation());
 		window.addEventListener('popstate', onPop);
@@ -31,25 +40,29 @@ const useLocation = () => {
 		window.history.pushState({}, '', to);
 		setLocation(readLocation());
 	};
+
+	// keep <title>, description and canonical in sync on client-side navigation
+	useEffect(() => applyMeta(location.path), [location.path]);
 	return [location, navigate];
 };
 
-export default function App() {
-	const [{ path, hash, tick }, navigate] = useLocation();
+export default function App({ initialPath = '/' }) {
+	const [{ path, hash, tick }, navigate] = useLocation(initialPath);
 	const isCV = path === '/cv';
+	const isHome = path === '/';
 
 	useReveal([path]);
 
 	// scroll to hash target (or top) after every navigation
 	useEffect(() => {
-		if (isCV || !hash) {
+		if (!isHome || !hash) {
 			window.scrollTo({ top: 0 });
 			return;
 		}
 		requestAnimationFrame(() =>
 			document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' })
 		);
-	}, [path, hash, tick, isCV]);
+	}, [path, hash, tick, isHome]);
 
 	return (
 		<>
@@ -58,6 +71,8 @@ export default function App() {
 			<main>
 				{isCV ? (
 					<CV />
+				) : !isHome ? (
+					<NotFound navigate={navigate} />
 				) : (
 					<>
 						<Hero navigate={navigate} />
