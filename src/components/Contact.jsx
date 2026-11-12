@@ -20,7 +20,7 @@ export default function Contact() {
 	};
 
 	return (
-		<Section id="contact" index={4} {...sections.contact}>
+		<Section id="contact" index={3} {...sections.contact}>
 			<div className="contact-grid">
 				<ul className="link-list reveal">
 					{links.map(({ icon, href, label }) => (

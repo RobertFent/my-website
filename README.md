@@ -28,15 +28,17 @@ index.html            entry point
 public/               static assets (portrait, photo, icons, CV pdf, favicon)
 src/
   main.jsx            React bootstrap (font, styles, Vercel analytics)
-  App.jsx             tiny router ("/" one-pager, "/cv" CV viewer)
-  content.js          all copy: hero, about, projects, services, links
+  App.jsx             tiny client-side router (pages defined in routes.js)
+  routes.js           URL ↔ page mapping per language
+  seo.js              metadata, hreflang and JSON-LD
+  content/            copy per language (en.js, de.js) + shared facts (shared.js)
   useReveal.js        scroll-in animation hook
   index.css           all styles (design tokens at the top)
   reset.css           CSS reset
-  components/         Header, Hero, Section, About, Projects, Services, Contact, CV, Footer, Icon
+  components/         Header, Hero, Section, About, Projects, Contact, CV, LegalPage, Footer, Icon
 ```
 
-To change text, edit `src/content.js` — the components only render what is in there.
+To change text, edit `src/content/en.js` and `src/content/de.js` — the components only render what is in there.
 
 ## Analytics
 
@@ -51,7 +53,6 @@ Vercel Web Analytics and Speed Insights are wired in via `<Analytics />` and `<S
 ## Content, languages and SEO
 
 - All copy lives in `src/content/` (`en.js`, `de.js`, shared facts in `shared.js`). The site is available in English (`/`) and German (`/de`).
-- Pages and URLs are defined in `src/routes.js`: home, CV, one page per service (`/services/<slug>`, `/de/leistungen/<slug>`) and the German legal pages `/impressum` and `/datenschutz`.
+- Pages and URLs are defined in `src/routes.js`: home and CV in English and German (`/`, `/cv`, `/de`, `/de/cv`) plus the German privacy policy `/datenschutz`.
 - `npm run build` prerenders every page to static HTML (`scripts/prerender.js`) with its own title, description, canonical, hreflang and JSON-LD, and generates `sitemap.xml` and `llms.txt`. The browser then hydrates the page.
 - The canonical domain is `https://www.robertfent.com` (the bare domain redirects there).
-- **Impressum:** the build fails until `street` and `postalCity` are filled in under `LEGAL` in `src/content/shared.js`, so an incomplete Impressum is never published. For local testing only: `ALLOW_LEGAL_PLACEHOLDERS=1 npm run build`.

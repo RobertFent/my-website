@@ -14,7 +14,7 @@ export {
 	metaFor,
 	pathFor
 } from './routes.js';
-export { EMAIL, content, links, missingLegalFields } from './content/index.js';
+export { EMAIL, content, links } from './content/index.js';
 
 export const render = (path) =>
 	renderToString(

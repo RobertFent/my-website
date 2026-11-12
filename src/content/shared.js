@@ -6,23 +6,10 @@ export const EMAIL = 'info@robertfent.com';
 export const NAME = 'Robert Fent';
 
 /**
- * Details for the Impressum (§ 5 DDG) and the privacy policy.
- * The build refuses to finish while a required field is still `null`, so an
- * incomplete Impressum can never be published by accident.
+ * Controller details for the privacy policy. This is a personal,
+ * non-commercial site, so it needs no Impressum (§ 5 DDG) and no postal address.
  */
-export const LEGAL = {
-	name: NAME,
-	street: null, // e.g. 'Musterstraße 1'            (required)
-	postalCity: null, // e.g. '93047 Regensburg'      (required)
-	country: 'Deutschland',
-	email: EMAIL,
-	phone: null, // e.g. '+49 151 12345678'           (optional, recommended)
-	vatId: null, // USt-IdNr. if you have one          (optional)
-	smallBusiness: false // true → adds the § 19 UStG Kleinunternehmer note
-};
-
-export const missingLegalFields = () =>
-	['street', 'postalCity'].filter((key) => !LEGAL[key]);
+export const LEGAL = { name: NAME, email: EMAIL };
 
 export const links = [
 	{ icon: 'email_white.png', href: `mailto:${EMAIL}`, label: EMAIL },
@@ -116,10 +103,4 @@ export const projectMeta = {
 			label: 'GitHub'
 		}
 	}
-};
-
-export const serviceMeta = {
-	website: { icon: 'setup_white.png' },
-	cloud: { icon: 'optimization_white.png' },
-	ai: { icon: 'ai_white.svg' }
 };

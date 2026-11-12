@@ -7,7 +7,7 @@
  * Output (served by Vercel with cleanUrls), e.g.:
  *   dist/index.html            → /
  *   dist/de.html               → /de
- *   dist/services/<slug>.html  → /services/<slug>
+ *   dist/de/cv.html            → /de/cv
  *   dist/404.html              → every unknown URL, with HTTP status 404
  */
 import {
@@ -37,19 +37,8 @@ const {
 	pathFor,
 	EMAIL,
 	content,
-	links,
-	missingLegalFields
+	links
 } = await import(join(ssrDir, 'entry-server.js'));
-
-// never publish an incomplete Impressum
-const missing = missingLegalFields();
-if (missing.length && !process.env.ALLOW_LEGAL_PLACEHOLDERS) {
-	rmSync(ssrDir, { recursive: true, force: true });
-	console.error(
-		`\n✖ Impressum incomplete: fill in ${missing.join(', ')} in LEGAL (src/content/shared.js).\n`
-	);
-	process.exit(1);
-}
 
 const template = readFileSync(join(dist, 'index.html'), 'utf8');
 
@@ -191,7 +180,7 @@ ${indexable.map(sitemapEntry).join('\n')}
 );
 
 // llms.txt (https://llmstxt.org): a plain-text summary for AI search engines
-const { name, hero, about, projects, services, skills } = content.en;
+const { name, hero, about, projects, skills } = content.en;
 const llms = `# ${name}
 
 > ${hero.eyebrow} based in Germany. ${hero.intro}
@@ -199,15 +188,6 @@ const llms = `# ${name}
 ${about.paragraphs[0]}
 
 The site is available in English (${SITE_URL}/) and German (${urlFor('/de')}).
-
-## Services
-
-${services
-	.map(
-		(s) =>
-			`- [${s.title}](${urlFor(pathFor({ locale: 'en', page: 'service', id: s.id }))}): ${s.description}`
-	)
-	.join('\n')}
 
 ## Projects
 

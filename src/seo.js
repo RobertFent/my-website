@@ -46,18 +46,7 @@ export const structuredData = (route) => {
 		})),
 		knowsAbout: c.skills,
 		knowsLanguage: ['de', 'en'],
-		sameAs: links.map((l) => l.href).filter((h) => h.startsWith('http')),
-		makesOffer: c.services.map((s) => ({
-			'@type': 'Offer',
-			itemOffered: {
-				'@type': 'Service',
-				name: s.title,
-				description: s.description,
-				url: urlFor(
-					pathFor({ locale: route.locale, page: 'service', id: s.id })
-				)
-			}
-		}))
+		sameAs: links.map((l) => l.href).filter((h) => h.startsWith('http'))
 	};
 
 	const website = {
@@ -85,31 +74,6 @@ export const structuredData = (route) => {
 	const graph = [webpage, person, website];
 	const crumbs = [{ name: c.ui.home, item: home }];
 
-	if (route.page === 'service') {
-		const s = c.services.find((x) => x.id === route.id);
-		graph.push(
-			{
-				'@type': 'Service',
-				'@id': `${url}#service`,
-				name: s.title,
-				description: s.intro,
-				url,
-				serviceType: s.title,
-				provider: { '@id': PERSON_ID },
-				areaServed: { '@type': 'Country', name: 'Germany' }
-			},
-			{
-				'@type': 'FAQPage',
-				'@id': `${url}#faq`,
-				mainEntity: s.faq.map(({ q, a }) => ({
-					'@type': 'Question',
-					name: q,
-					acceptedAnswer: { '@type': 'Answer', text: a }
-				}))
-			}
-		);
-		crumbs.push({ name: c.ui.services, item: `${home}#services` });
-	}
 	if (!isHome) crumbs.push({ name: title, item: url });
 	if (crumbs.length > 1) {
 		graph.push({

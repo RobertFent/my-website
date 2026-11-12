@@ -7,10 +7,7 @@ export default function Footer() {
 		<footer className="site-footer">
 			<div className="container footer-inner">
 				<p suppressHydrationWarning>© {new Date().getFullYear()} Robert Fent</p>
-				<nav className="footer-legal" aria-label={ui.legalNotice}>
-					<Link to="/impressum" hrefLang="de">
-						{ui.legalNotice}
-					</Link>
+				<nav className="footer-legal" aria-label={ui.privacy}>
 					<Link to="/datenschutz" hrefLang="de">
 						{ui.privacy}
 					</Link>

@@ -9,7 +9,7 @@ export default {
 		home: {
 			title: 'Robert Fent – Fullstack Developer & DevOps Engineer',
 			description:
-				'Robert Fent, Fullstack Software Developer & DevOps Engineer in Germany. Maintainable software, automated infrastructure, cloud cost optimization and AI integration.'
+				'Robert Fent, Fullstack Software Developer & DevOps Engineer in Germany. Projects in maintainable software, automated infrastructure, cloud cost optimization and AI integration.'
 		},
 		cv: {
 			title: 'CV – Robert Fent | Fullstack Developer & DevOps Engineer',
@@ -42,29 +42,15 @@ export default {
 		notFoundText:
 			'The page you are looking for doesn’t exist or has been moved.',
 		backHome: 'Back to home',
-		legalNotice: 'Legal notice',
 		privacy: 'Privacy policy',
 		iconsBy: 'Icons by',
 		designBy: 'Original design based on work by',
-		services: 'Services',
-		learnMore: 'Learn more',
-		service: 'Service',
-		included: 'What’s included',
-		process: 'How it works',
-		caseStudy: 'Case study',
-		faq: 'Frequently asked questions',
-		ctaTitle: 'Interested?',
-		ctaText:
-			'Tell me a bit about your project and I’ll get back to you with next steps.',
-		otherServices: 'Other services',
-		breadcrumb: 'Breadcrumb',
 		projectOn: (project, site) => `${project} on ${site}`
 	},
 
 	nav: [
 		{ hash: 'about', label: 'About' },
 		{ hash: 'projects', label: 'Projects' },
-		{ hash: 'services', label: 'Services' },
 		{ hash: 'contact', label: 'Contact' }
 	],
 
@@ -78,15 +64,10 @@ export default {
 			title: 'Software and infrastructure projects',
 			lead: 'A selection of things I have built at work and on my own time.'
 		},
-		services: {
-			label: 'Services',
-			title: 'Freelance development, DevOps and AI services',
-			lead: 'Some things I can do for you as a freelancer.'
-		},
 		contact: {
 			label: 'Contact',
-			title: 'Let’s work together',
-			lead: 'Have a project in mind or just want to say hello? My inbox is open.'
+			title: 'Get in touch',
+			lead: 'Questions about a project, an idea to discuss or just want to say hello? My inbox is open.'
 		}
 	},
 
@@ -177,180 +158,6 @@ export default {
 			title: 'Weather Forecast',
 			description:
 				'A small forecasting tool that predicts future weather from historical data. Pulls updates from the WorldWeatherOnline API and supports feature selection and training through a simple CLI.'
-		}
-	],
-
-	services: [
-		{
-			id: 'website',
-			slug: 'website-setup-vercel',
-			title: 'Website Setup on Vercel',
-			description:
-				'I build and deploy a single-page website like this one on Vercel with automatic HTTPS and deployments on every push, and connect your own domain via DNS, for example at Ionos.',
-			metaTitle:
-				'Website Setup on Vercel – Fast Single-Page Websites | Robert Fent',
-			metaDescription:
-				'I build and launch your single-page website on Vercel: automatic HTTPS, deployments on every push, your own domain and solid SEO basics. Freelancer in Germany.',
-			intro:
-				'A fast, modern single-page website that you own: built for your content, hosted on Vercel and live on your own domain. Every change you push goes online automatically.',
-			included: [
-				'A single-page website designed and built for your content',
-				'Hosting on Vercel with automatic HTTPS',
-				'Automatic deployments on every push to your Git repository',
-				'Your own domain connected via DNS, for example at Ionos',
-				'SEO basics: prerendered HTML, page metadata, sitemap and structured data',
-				'Privacy-friendly, cookieless analytics on request'
-			],
-			process: [
-				{
-					title: 'Kick-off',
-					text: 'We talk about your goals, your content and your domain.'
-				},
-				{
-					title: 'Build',
-					text: 'I design and build the site. Every change gets its own preview link you can check.'
-				},
-				{
-					title: 'Launch',
-					text: 'I connect your domain, enable HTTPS and put the site live.'
-				},
-				{
-					title: 'Handover',
-					text: 'You own the repository and the hosting account, with no lock-in.'
-				}
-			],
-			caseStudy: {
-				title: 'This website',
-				text: 'The site you are looking at: a prerendered React single-page site on Vercel with per-page metadata, structured data and a generated sitemap.',
-				result: 'Lighthouse: 99–100 in performance, accessibility and SEO'
-			},
-			faq: [
-				{
-					q: 'What does hosting on Vercel cost?',
-					a: 'Vercel’s free Hobby plan is meant for personal, non-commercial sites. Business websites need the Pro plan. I’ll help you pick the right plan before we start.'
-				},
-				{
-					q: 'Do I need to know how to code?',
-					a: 'No. I take care of the setup and deployment. If you want to update texts yourself, I can show you how; every change you push goes live automatically.'
-				},
-				{
-					q: 'Can I keep my existing domain?',
-					a: 'Yes. I connect the domain you already own by updating its DNS records, for example at Ionos.'
-				}
-			],
-			cta: 'Request a quote'
-		},
-		{
-			id: 'cloud',
-			slug: 'cloud-cost-optimization',
-			title: 'Cloud Cost Optimization',
-			description:
-				'I analyze your cloud setup (preferably AWS) and its monthly bill, propose concrete savings and, where it makes sense, migrate your services to Hetzner to save up to 97% of your monthly costs.',
-			metaTitle:
-				'Cloud Cost Optimization & AWS to Hetzner Migration | Robert Fent',
-			metaDescription:
-				'Lower your cloud bill: I analyze your AWS setup, propose concrete savings and migrate to Hetzner where it makes sense. Case study: from about 4,000€ to 100€ per month.',
-			intro:
-				'Cloud bills grow quietly. I analyze your setup and your monthly bill, show you where the money goes and what you can save, and carry out the changes, up to a full migration from AWS to Hetzner.',
-			included: [
-				'Review of your cloud architecture and your monthly bill',
-				'A written list of concrete savings with their estimated impact',
-				'Migration from AWS (for example EC2 and ECS) to Hetzner where it pays off',
-				'Docker Compose setup with reverse proxy and automated HTTPS',
-				'Backups and documentation so your team can run the result'
-			],
-			process: [
-				{
-					title: 'Analysis',
-					text: 'I go through your infrastructure and your bill line by line.'
-				},
-				{
-					title: 'Proposal',
-					text: 'You get concrete savings options with their trade-offs, so you can decide.'
-				},
-				{
-					title: 'Migration',
-					text: 'I implement the changes step by step, planned to keep downtime short.'
-				},
-				{
-					title: 'Handover',
-					text: 'Documentation and a walkthrough so your team stays in control.'
-				}
-			],
-			caseStudy: {
-				title: 'AWS to Hetzner migration',
-				text: 'I migrated our company infrastructure from AWS (EC2, ECS) to a single Docker Compose stack on Hetzner, with NGINX as reverse proxy and automated HTTPS.',
-				result: 'Monthly costs: from about 4,000€ to about 100€ (−97%)'
-			},
-			faq: [
-				{
-					q: 'Do I have to move away from AWS?',
-					a: 'No. Often there are savings within AWS itself, for example by right-sizing or removing unused resources. I only propose a migration where it clearly pays off.'
-				},
-				{
-					q: 'How much can I save?',
-					a: 'That depends on your setup. In our own migration, monthly costs dropped from roughly 4,000€ to about 100€. The analysis shows what is realistic for you.'
-				},
-				{
-					q: 'Which cloud providers do you work with?',
-					a: 'Mainly AWS and Hetzner, with Docker, Ansible and NGINX or Traefik on top.'
-				}
-			],
-			cta: 'Get in touch'
-		},
-		{
-			id: 'ai',
-			slug: 'ai-integration',
-			title: 'AI Setup & Infrastructure Integration',
-			description:
-				'I set up AI for your business and wire it into the tools you already use: from choosing the right model (hosted or self-hosted) to LLM-powered assistants, automations and integrations in your existing infrastructure, with data privacy and running costs in mind.',
-			metaTitle:
-				'AI Integration for Businesses – LLM Setup & Automation | Robert Fent',
-			metaDescription:
-				'I set up AI for your business: hosted or self-hosted models, LLM-powered assistants and automations integrated into your existing tools, with data privacy in mind.',
-			intro:
-				'AI is most useful when it works inside the tools your team already uses. I help you choose the right model, build assistants and automations, and run them securely in your infrastructure.',
-			included: [
-				'Choosing the right model, hosted or self-hosted',
-				'LLM-powered assistants for your team',
-				'Automations and integrations with the tools you already use',
-				'Data privacy and running costs considered from the start',
-				'Secure deployment in your infrastructure, for example behind single sign-on'
-			],
-			process: [
-				{
-					title: 'Use cases',
-					text: 'We identify where AI saves your team real time.'
-				},
-				{
-					title: 'Model choice',
-					text: 'I compare hosted and self-hosted options on quality, privacy and cost.'
-				},
-				{
-					title: 'Integration',
-					text: 'I build the assistant or automation into your existing tools.'
-				},
-				{
-					title: 'Operation',
-					text: 'Deployment, access control and monitoring in your infrastructure.'
-				}
-			],
-			caseStudy: {
-				title: 'AI-assisted mail and calendar client',
-				text: 'As part of our company’s self-hosted software suite I built an AI-assisted mail and calendar client for Microsoft 365, behind one Authentik single sign-on with enforced MFA.',
-				result: 'AI integrated into daily work, inside our own infrastructure'
-			},
-			faq: [
-				{
-					q: 'Can the AI run on our own servers?',
-					a: 'Yes. If it fits your data privacy requirements, self-hosted models are an option. I compare them with hosted models on quality and running costs.'
-				},
-				{
-					q: 'Does our data leave the company?',
-					a: 'That depends on the setup you choose. With self-hosted models it can stay entirely on your infrastructure; with hosted models I choose providers and settings that match your privacy requirements.'
-				}
-			],
-			cta: 'Discuss your use case'
 		}
 	],
 

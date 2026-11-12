@@ -1,81 +1,16 @@
 import { LEGAL } from '../content/index.js';
 
 /**
- * Impressum and Datenschutzerklärung (German only, as legally required).
- * Personal details come from LEGAL in src/content/shared.js.
+ * Datenschutzerklärung (German only). This is a personal, non-commercial site,
+ * so it has no Impressum; the controller is named with e-mail contact only.
  */
-const missing = (value) => value ?? '[bitte ergänzen]';
-
-function Address() {
+function Controller() {
 	return (
 		<p>
 			{LEGAL.name}
 			<br />
-			{missing(LEGAL.street)}
-			<br />
-			{missing(LEGAL.postalCity)}
-			<br />
-			{LEGAL.country}
-		</p>
-	);
-}
-
-function Contact() {
-	return (
-		<p>
 			E-Mail: <a href={`mailto:${LEGAL.email}`}>{LEGAL.email}</a>
-			{LEGAL.phone && (
-				<>
-					<br />
-					Telefon:{' '}
-					<a href={`tel:${LEGAL.phone.replace(/\s/g, '')}`}>{LEGAL.phone}</a>
-				</>
-			)}
 		</p>
-	);
-}
-
-function Impressum() {
-	return (
-		<>
-			<h1>Impressum</h1>
-
-			<h2>Angaben gemäß § 5 DDG</h2>
-			<Address />
-
-			<h2>Kontakt</h2>
-			<Contact />
-
-			{LEGAL.vatId && (
-				<>
-					<h2>Umsatzsteuer-ID</h2>
-					<p>
-						Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: {LEGAL.vatId}
-					</p>
-				</>
-			)}
-			{LEGAL.smallBusiness && (
-				<p>
-					Gemäß § 19 UStG wird keine Umsatzsteuer berechnet
-					(Kleinunternehmerregelung).
-				</p>
-			)}
-
-			<h2>Verbraucherstreitbeilegung</h2>
-			<p>
-				Ich bin nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor
-				einer Verbraucherschlichtungsstelle teilzunehmen.
-			</p>
-
-			<h2>Haftung für Links</h2>
-			<p>
-				Diese Website enthält Links zu externen Websites Dritter, auf deren
-				Inhalte ich keinen Einfluss habe. Für die Inhalte der verlinkten Seiten
-				ist stets der jeweilige Anbieter oder Betreiber verantwortlich. Bei
-				Bekanntwerden von Rechtsverletzungen werde ich derartige Links umgehend
-				entfernen.
-			</p>
-		</>
 	);
 }
 
@@ -90,8 +25,7 @@ function Datenschutz() {
 			</p>
 
 			<h2>1. Verantwortlicher</h2>
-			<Address />
-			<Contact />
+			<Controller />
 
 			<h2>2. Hosting und Server-Logfiles</h2>
 			<p>
@@ -184,10 +118,10 @@ function Datenschutz() {
 	);
 }
 
-export default function LegalPage({ page }) {
+export default function LegalPage() {
 	return (
 		<article className="legal container" lang="de">
-			{page === 'impressum' ? <Impressum /> : <Datenschutz />}
+			<Datenschutz />
 		</article>
 	);
 }

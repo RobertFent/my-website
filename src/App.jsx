@@ -4,10 +4,8 @@ import Footer from './components/Footer.jsx';
 import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
 import Projects from './components/Projects.jsx';
-import Services from './components/Services.jsx';
 import Contact from './components/Contact.jsx';
 import CV from './components/CV.jsx';
-import ServicePage from './components/ServicePage.jsx';
 import LegalPage from './components/LegalPage.jsx';
 import NotFound from './components/NotFound.jsx';
 import useReveal from './useReveal.js';
@@ -54,17 +52,13 @@ const renderPage = (route) => {
 					<Hero />
 					<About />
 					<Projects />
-					<Services />
 					<Contact />
 				</>
 			);
 		case 'cv':
 			return <CV />;
-		case 'service':
-			return <ServicePage id={route.id} />;
-		case 'impressum':
 		case 'datenschutz':
-			return <LegalPage page={route.page} />;
+			return <LegalPage />;
 		default:
 			return <NotFound />;
 	}

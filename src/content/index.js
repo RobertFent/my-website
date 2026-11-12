@@ -3,7 +3,7 @@
  */
 import en from './en.js';
 import de from './de.js';
-import { NAME, projectMeta, serviceMeta, skills } from './shared.js';
+import { NAME, projectMeta, skills } from './shared.js';
 
 export * from './shared.js';
 
@@ -11,8 +11,7 @@ const withShared = (locale) => ({
 	...locale,
 	name: NAME,
 	skills,
-	projects: locale.projects.map((p) => ({ ...projectMeta[p.id], ...p })),
-	services: locale.services.map((s) => ({ ...serviceMeta[s.id], ...s }))
+	projects: locale.projects.map((p) => ({ ...projectMeta[p.id], ...p }))
 });
 
 export const content = { en: withShared(en), de: withShared(de) };
