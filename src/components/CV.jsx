@@ -22,11 +22,7 @@ export default function CV() {
 					items={about.experience}
 					headingLevel={2}
 				/>
-				<Timeline
-					title="Education"
-					items={about.education}
-					headingLevel={2}
-				/>
+				<Timeline title="Education" items={about.education} headingLevel={2} />
 			</div>
 
 			<div className="cv-skills">

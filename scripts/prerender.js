@@ -16,7 +16,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = join(root, 'dist');
 const ssrDir = join(root, 'dist-ssr');
 
-const { render, pages, pageFor, urlFor, structuredData, SITE_URL } =
+const { render, pages, pageFor, urlFor, structuredData, SITE_URL, content } =
 	await import(join(ssrDir, 'entry-server.js'));
 
 const template = readFileSync(join(dist, 'index.html'), 'utf8');
@@ -43,6 +43,13 @@ const latinFont = readdirSync(join(dist, 'assets')).find((f) =>
 const fontPreload = latinFont
 	? `<link rel="preload" as="font" type="font/woff2" href="/assets/${latinFont}" crossorigin />`
 	: '';
+
+// inline the (small) stylesheet so first paint doesn't wait for a CSS request
+const inlineCss = (html) =>
+	html.replace(
+		/<link rel="stylesheet"[^>]*href="(\/assets\/[^"]+\.css)"[^>]*>/,
+		(_, href) => `<style>${readFileSync(join(dist, href), 'utf8')}</style>`
+	);
 
 const buildPage = (path, { noindex = false } = {}) => {
 	const { title, description } = pageFor(path);
@@ -83,28 +90,83 @@ const buildPage = (path, { noindex = false } = {}) => {
 	// remove the dev-only comment block
 	html = html.replace(/\s*<!--\s*The values below[\s\S]*?-->/, '');
 
-	return html.replace('<!--app-html-->', render(path));
+	return inlineCss(html).replace('<!--app-html-->', render(path));
 };
 
 writeFileSync(join(dist, 'index.html'), buildPage('/'));
 writeFileSync(join(dist, 'cv.html'), buildPage('/cv'));
 writeFileSync(join(dist, '404.html'), buildPage('/404', { noindex: true }));
 
-// sitemap.xml generated from the page list so it never drifts
+// sitemap.xml generated from the page list so it never drifts; the home page
+// lists its photos so they can show up in image search for the name
 const today = new Date().toISOString().slice(0, 10);
+const images = {
+	'/': ['/portrait.webp', '/about.webp', '/og-image.jpg']
+};
+const sitemapEntry = (path) =>
+	[
+		'\t<url>',
+		`\t\t<loc>${urlFor(path)}</loc>`,
+		`\t\t<lastmod>${today}</lastmod>`,
+		...(images[path] ?? []).map(
+			(src) =>
+				`\t\t<image:image><image:loc>${SITE_URL}${src}</image:loc></image:image>`
+		),
+		'\t</url>'
+	].join('\n');
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${Object.keys(pages)
-	.map(
-		(path) =>
-			`	<url>\n		<loc>${urlFor(path)}</loc>\n		<lastmod>${today}</lastmod>\n	</url>`
-	)
-	.join('\n')}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${Object.keys(pages).map(sitemapEntry).join('\n')}
 </urlset>
 `;
 writeFileSync(join(dist, 'sitemap.xml'), sitemap);
 
+// llms.txt (https://llmstxt.org): a plain-text summary for AI search engines
+const { hero, about, projects, services, links, EMAIL } = content;
+const llms = `# ${hero.name}
+
+> ${hero.eyebrow} based in Germany. ${hero.intro}
+
+${about.paragraphs[0]}
+
+## Services
+
+${services.map((s) => `- **${s.title}**: ${s.description}`).join('\n')}
+
+## Projects
+
+${projects
+	.map(
+		(p) =>
+			`- **${p.title}**${p.link ? ` ([${p.link.label}](${p.link.href}))` : ''}: ${p.description}`
+	)
+	.join('\n')}
+
+## Experience
+
+${about.experience.map((e) => `- ${e.period}: ${e.role}, ${e.org}`).join('\n')}
+
+## Education
+
+${about.education.map((e) => `- ${e.period}: ${e.role}, ${e.org}`).join('\n')}
+
+## Skills
+
+${about.skills.join(', ')}
+
+## Links
+
+- [Website](${SITE_URL}/)
+- [CV](${urlFor('/cv')}) ([PDF](${SITE_URL}/cv.pdf))
+${links
+	.filter((l) => l.href.startsWith('http'))
+	.map((l) => `- [${l.label}](${l.href})`)
+	.join('\n')}
+- Email: ${EMAIL}
+`;
+writeFileSync(join(dist, 'llms.txt'), llms);
+
 rmSync(ssrDir, { recursive: true, force: true });
 console.log(
-	`prerendered ${Object.keys(pages).length} pages + 404 and sitemap for ${SITE_URL}`
+	`prerendered ${Object.keys(pages).length} pages + 404, sitemap and llms.txt for ${SITE_URL}`
 );

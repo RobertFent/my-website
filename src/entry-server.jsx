@@ -7,6 +7,7 @@ import { renderToString } from 'react-dom/server';
 import App from './App.jsx';
 
 export { pages, pageFor, urlFor, structuredData, SITE_URL } from './seo.js';
+export * as content from './content.js';
 
 export const render = (path) =>
 	renderToString(
